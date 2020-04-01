@@ -1,29 +1,53 @@
+const navList = [
+  {
+    path: '/',
+    name: 'phyzess',
+    as: 'route',
+  },
+  {
+    path: '/blog',
+    name: 'Blog',
+    as: 'route',
+  },
+  {
+    path: '/playground',
+    name: 'Playground',
+    as: 'route',
+  },
+]
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `phyzess.me`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `phyzess`,
+      summary: ``,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    description: `A Playground`,
+    siteUrl: `https://phyzess.me/`,
     social: {
-      twitter: `kylemathews`,
+      github: `phyzess`,
     },
+    navList,
   },
   plugins: [
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: `gatsby-alias-imports`,
       options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
+        aliases: {
+          '@': `src`,
+          '@components': `src/components`,
+          '@pages': `src/pages`,
+          '@utils': `src/utils`,
+          '@templates': `src/templates`,
+        },
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/assets`,
-        name: `assets`,
+        path: `${__dirname}/content/blog`,
+        name: `blog`,
       },
     },
     {
@@ -53,20 +77,20 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        // trackingId: `ADD YOUR TRACKING ID HERE`,
       },
     },
     `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `phyzess.me`,
+        short_name: `phyzess`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `static/avatar.png`,
       },
     },
     `gatsby-plugin-react-helmet`,
@@ -76,8 +100,8 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-typescript`,
+    `gatsby-plugin-eslint`,
+    `gatsby-plugin-stylus`,
   ],
 }
