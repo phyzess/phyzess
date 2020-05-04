@@ -1,1 +1,1 @@
-# Phyzess Playground
+Blog & Playground

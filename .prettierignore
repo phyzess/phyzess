@@ -1,5 +1,7 @@
-.cache
-.history
+.cache/*
+.history/*
 package.json
 package-lock.json
 public
+.vscode/*
+README.md

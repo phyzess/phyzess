@@ -1,21 +1,40 @@
 module.exports = {
-  extends: ['alloy', 'alloy/react', 'alloy/typescript'],
+  extends: [
+    'alloy',
+    'alloy/react',
+    'alloy/typescript',
+    'prettier',
+    'prettier/babel',
+    'prettier/react',
+    'prettier/@typescript-eslint',
+  ],
+  plugins: ['prettier'],
+  parserOptions: {
+    ecmaVersion: 2020,
+    ecmaFeatures: {
+      jsx: true,
+      experimentalObjectRestSpread: true,
+    },
+    sourceType: 'module',
+  },
   env: {
-    // browser: true,
-    // node: true,
-    // mocha: true,
-    // jest: true,
-    // jquery: true
+    browser: true,
+    node: true,
   },
-  globals: {
-    // 全局变量（设置为 false 表示它不允许被重新赋值）
-    //
-    // myGlobal: false
-  },
+  globals: {},
   rules: {},
   settings: {
     react: {
       version: 'detect',
+    },
+    'import/resolver': {
+      alias: [
+        ['@', `src`],
+        ['@components', `src/components`],
+        ['@pages', `src/pages`],
+        ['@utils', `src/utils`],
+        ['@templates', `src/templates`],
+      ],
     },
   },
 }
