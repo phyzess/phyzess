@@ -10,18 +10,14 @@ const cls = bemFactor('layout')
 const Header: React.FC<any> = () => {
   const { pathname } = useContext(LocationContext)
   const {
-    site: {
-      siteMetadata: { navList },
-    },
+    siteMeta: { navList },
   } = useStaticQuery(graphql`
     query {
-      site {
-        siteMetadata {
-          navList {
-            path
-            name
-            as
-          }
+      siteMeta {
+        navList {
+          path
+          name
+          as
         }
       }
       sitePage {

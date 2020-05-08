@@ -27,28 +27,19 @@ const NameHeader = styled.h1`
 
 const LandingBio: React.FC<any> = () => {
   const {
-    site: {
-      siteMetadata: {
-        author: { name, summary },
-      },
-    },
+    siteMeta: { copyrightName },
   } = useStaticQuery(graphql`
     query {
-      site {
-        siteMetadata {
-          author {
-            name
-            summary
-          }
-        }
+      siteMeta {
+        copyrightName
       }
     }
   `)
   return (
     <OuterContainer>
       <Container>
-        <NameHeader>{name}</NameHeader>
-        <Description>{summary}</Description>
+        <NameHeader>{copyrightName}</NameHeader>
+        {/* <Description>{summary}</Description> */}
       </Container>
     </OuterContainer>
   )

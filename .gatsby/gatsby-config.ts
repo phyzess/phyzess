@@ -81,18 +81,18 @@ module.exports = {
       },
     },
     `gatsby-plugin-feed`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `phyzess.me`,
-        short_name: `phyzess`,
-        start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `static/avatar.png`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-manifest`,
+    //   options: {
+    //     name: `phyzess.me`,
+    //     short_name: `phyzess`,
+    //     start_url: `/`,
+    //     background_color: `#ffffff`,
+    //     theme_color: `#663399`,
+    //     display: `minimal-ui`,
+    //     icon: `static/avatar.png`,
+    //   },
+    // },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-typography`,

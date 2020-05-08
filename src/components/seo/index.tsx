@@ -15,23 +15,18 @@ const Seo: React.FC<ISeoProps> = ({
   meta = [],
   title,
 }) => {
-  const { site } = useStaticQuery(
+  const { siteMeta } = useStaticQuery(
     graphql`
       query {
-        site {
-          siteMetadata {
-            title
-            description
-            # social {
-            #   twitter
-            # }
-          }
+        siteMeta {
+          title
+          description
         }
       }
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
+  const metaDescription = description || siteMeta.description
 
   return (
     <Helmet
@@ -39,7 +34,7 @@ const Seo: React.FC<ISeoProps> = ({
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={`%s | ${siteMeta.title}`}
       meta={[
         {
           name: `description`,
@@ -63,7 +58,7 @@ const Seo: React.FC<ISeoProps> = ({
         },
         // {
         //   name: `twitter:creator`,
-        //   content: site.siteMetadata.social.twitter,
+        //   content: siteMeta.social.twitter,
         // },
         {
           name: `twitter:title`,

@@ -6,11 +6,9 @@ import Seo from '@/components/seo'
 
 // export const pageQuery = graphql`
 //   query {
-//     site {
-//       siteMetadata {
+//       siteMeta {
 //         title
 //       }
-//     }
 //     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
 //       edges {
 //         node {
