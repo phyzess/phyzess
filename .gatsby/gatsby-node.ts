@@ -2,7 +2,7 @@ import { resolve } from 'path'
 import { createFilePath } from 'gatsby-source-filesystem'
 import dayjs from 'dayjs'
 import downloader from 'image-downloader'
-import { token, siteConfigPageUrl } from '../nophyConfig'
+import { token, siteConfigPageUrl, postListPageUrl } from '../nophyConfig'
 import Nophy, { parseImageUrl } from '@phyzess/nophy'
 import { ISiteMetaData } from './types'
 
@@ -33,39 +33,42 @@ const getSiteConfigFromNotion = async (): Promise<ISiteMetaData> => {
   const siteConfigData = siteConfigFromNotion.getRowData()
 
   let siteConfig = {} as ISiteMetaData
-  await Promise.all(
-    siteConfigData.map(async ({ type, name, value, image }) => {
-      switch (type) {
-        case 'text':
-          siteConfig[name] = value
-          break
-        case 'number':
-          siteConfig[name] = parseInt(value, 10)
-          break
-        case 'boolean':
-          siteConfig[name] = Boolean(value) && value === '1'
-          break
-        case 'image':
-          if (image.url) {
-            let path: string
-            if (name === 'avatar') {
-              path = `static/avatar.png`
-            } else if (name === 'icon') {
-              path = `static/favicon.ico`
-            }
-            const options = {
-              url: parseImageUrl(image.url),
-              dest: path,
-            }
-            await downloader.image(options)
-            siteConfig[name] = image
+  for (const { valueType, name, value, image } of siteConfigData) {
+    switch (valueType) {
+      case 'text':
+        siteConfig[name] = value
+        break
+      case 'number':
+        siteConfig[name] = parseInt(value, 10)
+        break
+      case 'boolean':
+        siteConfig[name] = Boolean(value) && value === '1'
+        break
+      case 'image':
+        if (image.url) {
+          let path: string
+          if (name === 'avatar') {
+            path = `static/avatar.png`
+          } else if (name === 'icon') {
+            path = `static/favicon.ico`
           }
-          break
-      }
-    })
-  )
+          const options = {
+            url: parseImageUrl(image.url),
+            dest: path,
+          }
+          await downloader.image(options)
+          siteConfig[name] = image
+        }
+        break
+    }
+  }
 
   return siteConfig
+}
+
+const getPostsFromNotion = async () => {
+  const postListPage = await notion.fetchPage(postListPageUrl)
+  return postListPage.loadPages(_ => _.status === 'completed')
 }
 
 export async function sourceNodes({
@@ -73,7 +76,11 @@ export async function sourceNodes({
   createNodeId,
   createContentDigest,
 }) {
+  console.log('🦑 fetching site config data start >>>')
   const siteConfig = await getSiteConfigFromNotion()
+  console.log('🦑 fetching site config data complete <<<')
+
+  console.log('🦑 generating site meta start >>>')
   const siteCopyrightName = siteConfig.copyrightName
   const siteMeta = {
     ...siteConfig,
@@ -89,6 +96,24 @@ export async function sourceNodes({
       contentDigest: createContentDigest(siteMeta),
     },
   })
+  console.log('🦑 generating site meta complete <<<')
+
+  console.log('🦑 fetching post list data start >>>')
+  const posts = await getPostsFromNotion()
+  console.log('🦑 fetching post list data complete >>>')
+
+  console.log('🦑 generating posts start >>>')
+  createNode({
+    posts,
+    name: `posts`,
+    type: `posts`,
+    id: createNodeId(`posts@${dayjs().valueOf()}`),
+    internal: {
+      type: `posts`,
+      contentDigest: createContentDigest(posts),
+    },
+  })
+  console.log('🦑 generating posts end <<<')
 }
 
 export async function createPages({ graphql, actions }) {
