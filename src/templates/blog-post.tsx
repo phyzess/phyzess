@@ -6,13 +6,14 @@ import Seo from '../components/seo'
 import { rhythm, scale } from '../utils/typography'
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
-  const post = data.markdownRemark
+  // const post = data.markdownRemark
   const siteTitle = data.siteMeta.title
-  const { previous, next } = pageContext
+  // const { previous, next } = pageContext
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo
+      post
+      {/* <Seo
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
@@ -70,27 +71,27 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             )}
           </li>
         </ul>
-      </nav>
+      </nav> */}
     </Layout>
   )
 }
 
 export default BlogPostTemplate
 
-export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
-    siteMeta {
-      title
-    }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
-      excerpt(pruneLength: 160)
-      html
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        description
-      }
-    }
-  }
-`
+// export const pageQuery = graphql`
+//   query BlogPostBySlug($slug: String!) {
+//     siteMeta {
+//       title
+//     }
+//     markdownRemark(fields: { slug: { eq: $slug } }) {
+//       id
+//       excerpt(pruneLength: 160)
+//       html
+//       frontmatter {
+//         title
+//         date(formatString: "MMMM DD, YYYY")
+//         description
+//       }
+//     }
+//   }
+// `

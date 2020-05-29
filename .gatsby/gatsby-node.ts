@@ -68,14 +68,10 @@ const getSiteConfigFromNotion = async (): Promise<ISiteMetaData> => {
 
 const getPostsFromNotion = async () => {
   const postListPage = await notion.fetchPage(postListPageUrl)
-  return postListPage.loadPages(_ => _.status === 'completed')
+  return postListPage.loadPages((_) => _.status === 'completed')
 }
 
-export async function sourceNodes({
-  actions: { createNode },
-  createNodeId,
-  createContentDigest,
-}) {
+export async function sourceNodes({ actions: { createNode }, createNodeId, createContentDigest }) {
   console.log('🦑 fetching site config data start >>>')
   const siteConfig = await getSiteConfigFromNotion()
   console.log('🦑 fetching site config data complete <<<')
@@ -117,63 +113,57 @@ export async function sourceNodes({
 }
 
 export async function createPages({ graphql, actions }) {
-  const { createPage } = actions
-
-  const blogPost = resolve(`./src/templates/blog-post.tsx`)
-  const result = await graphql(
-    `
-      {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-          limit: 1000
-        ) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-              }
-            }
-          }
-        }
-      }
-    `
-  )
-
-  if (result.errors) {
-    throw result.errors
-  }
-
-  // Create blog posts pages.
-  const posts = result.data.allMarkdownRemark.edges
-
-  posts.forEach((post, index) => {
-    const previous = index === posts.length - 1 ? null : posts[index + 1].node
-    const next = index === 0 ? null : posts[index - 1].node
-
-    createPage({
-      path: post.node.fields.slug,
-      component: blogPost,
-      context: {
-        slug: post.node.fields.slug,
-        previous,
-        next,
-      },
-    })
-  })
+  // const { createPage } = actions
+  // const blogPost = resolve(`./src/templates/blog-post.tsx`)
+  // const result = await graphql(
+  //   `
+  //     {
+  //       allMarkdownRemark(
+  //         sort: { fields: [frontmatter___date], order: DESC }
+  //         limit: 1000
+  //       ) {
+  //         edges {
+  //           node {
+  //             fields {
+  //               slug
+  //             }
+  //             frontmatter {
+  //               title
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //   `
+  // )
+  // if (result.errors) {
+  //   throw result.errors
+  // }
+  // // Create blog posts pages.
+  // const posts = result.data.allMarkdownRemark.edges
+  // posts.forEach((post, index) => {
+  //   const previous = index === posts.length - 1 ? null : posts[index + 1].node
+  //   const next = index === 0 ? null : posts[index - 1].node
+  //   createPage({
+  //     path: post.node.fields.slug,
+  //     component: blogPost,
+  //     context: {
+  //       slug: post.node.fields.slug,
+  //       previous,
+  //       next,
+  //     },
+  //   })
+  // })
 }
 
 export function onCreateNode({ node, actions, getNode }) {
-  const { createNodeField } = actions
-
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
-    createNodeField({
-      name: `slug`,
-      node,
-      value: `blogs${value}`,
-    })
-  }
+  // const { createNodeField } = actions
+  // if (node.internal.type === `MarkdownRemark`) {
+  //   const value = createFilePath({ node, getNode })
+  //   createNodeField({
+  //     name: `slug`,
+  //     node,
+  //     value: `blogs${value}`,
+  //   })
+  // }
 }

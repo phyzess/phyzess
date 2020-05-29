@@ -1,35 +1,4 @@
-const navList = [
-  {
-    path: '/',
-    name: 'phyzess',
-    as: 'route',
-  },
-  {
-    path: '/blog',
-    name: 'Blog',
-    as: 'route',
-  },
-  {
-    path: '/playground',
-    name: 'Playground',
-    as: 'route',
-  },
-]
-
-module.exports = {
-  siteMetadata: {
-    title: `phyzess.me`,
-    author: {
-      name: `phyzess`,
-      summary: ``,
-    },
-    description: `A Playground`,
-    siteUrl: `https://phyzess.me/`,
-    social: {
-      github: `phyzess`,
-    },
-    navList,
-  },
+const builder = {
   plugins: [
     {
       resolve: `gatsby-alias-imports`,
@@ -41,35 +10,6 @@ module.exports = {
           '@utils': `src/utils`,
           '@templates': `src/templates`,
         },
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${process.cwd()}/content/blog`,
-        name: `blog`,
-      },
-    },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 590,
-            },
-          },
-          {
-            resolve: `gatsby-remark-responsive-iframe`,
-            options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
-            },
-          },
-          `gatsby-remark-prismjs`,
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`,
-        ],
       },
     },
     `gatsby-transformer-sharp`,
@@ -105,3 +45,5 @@ module.exports = {
     `gatsby-plugin-stylus`,
   ],
 }
+
+export default builder
