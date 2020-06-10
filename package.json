@@ -1,7 +1,7 @@
 {
-  "name": "phyzess-playground",
+  "name": "phyzess",
   "private": true,
-  "description": "phyzess-playground",
+  "description": "personal blog & playground",
   "version": "0.1.0",
   "author": "phyzess <phyzess@gmail.com>",
   "scripts": {
@@ -68,7 +68,8 @@
   "homepage": "https://phyzess.me",
   "keywords": [
     "gatsby",
-    "phyzess-playground",
+    "playground",
+    "blog",
     "phyzess.me"
   ],
   "license": "MIT",
