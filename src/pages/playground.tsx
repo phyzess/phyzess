@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from '@components/layouts'
-import Seo from '@/components/seo'
+import Seo from '@components/seo'
 
 const Playground = ({ location }) => {
   return (

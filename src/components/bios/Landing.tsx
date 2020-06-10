@@ -25,7 +25,7 @@ const NameHeader = styled.h1`
   margin-bottom: 0;
 `
 
-const LandingBio: React.FC<any> = () => {
+const Landing: React.FC<{}> = () => {
   const {
     siteMeta: { copyrightName },
   } = useStaticQuery(graphql`
@@ -45,4 +45,4 @@ const LandingBio: React.FC<any> = () => {
   )
 }
 
-export default LandingBio
+export default Landing

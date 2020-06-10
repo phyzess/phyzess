@@ -6,6 +6,10 @@
 
 // And to shim assets, use (one file extension per `declare`):
 // declare module "*.png"
+
+/**
+ * gatsby 内置类型参考：https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby/index.d.ts
+ */
 declare module 'typography-theme-moraga' {
   import { TypographyOptions } from 'typography'
   const Theme: TypographyOptions

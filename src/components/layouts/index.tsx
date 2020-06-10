@@ -1,4 +1,5 @@
 import React from 'react'
+import { PageProps } from 'gatsby'
 import bemFactor from '@utils/bemFactor'
 
 import { LayoutWrapper, Main } from './index.styled'
@@ -8,25 +9,12 @@ import './reset.styl'
 
 const cls = bemFactor('layout')
 
-interface Location {
-  pathname?: string
-  search?: string
-  hash?: string
-  href?: string
-  origin?: string
-  protocol?: string
-  host?: string
-  hostname?: string
-  port?: string
-  state?: any
-  key?: string
-  action?: string
-}
 interface ILayoutProps {
-  location: Location
+  location: PageProps['location']
 }
 
-const defaultLocation: Location = {}
+// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+const defaultLocation: PageProps['location'] = {} as PageProps['location']
 export const LocationContext = React.createContext(defaultLocation)
 
 const Layout: React.FC<ILayoutProps> = ({ location, children }) => {

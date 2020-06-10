@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import bemFactor from '@utils/bemFactor'
-import Link from '@/components/link'
+import Link from '@components/link'
 import { LocationContext } from './index'
 import { HeaderWrapper } from './index.styled'
 

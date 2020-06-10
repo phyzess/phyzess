@@ -1,15 +1,17 @@
 import React from 'react'
+import { PageProps } from 'gatsby'
+import withThemeRoot from '@components/HOC/withThemeRoot'
 import Layout from '@components/layouts'
-import LandingBio from '@components/bios/LandingBio'
-import Seo from '@/components/seo'
+import Landing from '@components/bios/Landing'
+import Seo from '@components/seo'
 
-const PhyzessIndex = ({ location }) => {
+const PhyzessIndex: React.FC<PageProps> = ({ location }) => {
   return (
     <Layout location={location}>
       <Seo title='home' />
-      <LandingBio />
+      <Landing />
     </Layout>
   )
 }
 
-export default PhyzessIndex
+export default withThemeRoot(PhyzessIndex)

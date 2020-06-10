@@ -4,21 +4,21 @@ import dayjs from 'dayjs'
 import downloader from 'image-downloader'
 import { token, siteConfigPageUrl, postListPageUrl } from '../nophyConfig'
 import Nophy, { parseImageUrl } from '@phyzess/nophy'
-import { ISiteMetaData } from './types'
+import { ISiteMetaData, INavItem } from './types'
 
 const notion = new Nophy({
   token,
 })
 
-const navList = [
+const navList: INavItem[] = [
   {
     path: '/',
     name: 'phyzess',
     as: 'route',
   },
   {
-    path: '/blog',
-    name: 'Blog',
+    path: '/posts',
+    name: 'Posts',
     as: 'route',
   },
   {
@@ -100,7 +100,7 @@ export async function sourceNodes({ actions: { createNode }, createNodeId, creat
 
   console.log('🦑 generating posts start >>>')
   createNode({
-    posts,
+    postList: posts,
     name: `posts`,
     type: `posts`,
     id: createNodeId(`posts@${dayjs().valueOf()}`),
@@ -113,57 +113,57 @@ export async function sourceNodes({ actions: { createNode }, createNodeId, creat
 }
 
 export async function createPages({ graphql, actions }) {
-  // const { createPage } = actions
-  // const blogPost = resolve(`./src/templates/blog-post.tsx`)
-  // const result = await graphql(
-  //   `
-  //     {
-  //       allMarkdownRemark(
-  //         sort: { fields: [frontmatter___date], order: DESC }
-  //         limit: 1000
-  //       ) {
-  //         edges {
-  //           node {
-  //             fields {
-  //               slug
-  //             }
-  //             frontmatter {
-  //               title
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //   `
-  // )
-  // if (result.errors) {
-  //   throw result.errors
-  // }
-  // // Create blog posts pages.
-  // const posts = result.data.allMarkdownRemark.edges
-  // posts.forEach((post, index) => {
-  //   const previous = index === posts.length - 1 ? null : posts[index + 1].node
-  //   const next = index === 0 ? null : posts[index - 1].node
-  //   createPage({
-  //     path: post.node.fields.slug,
-  //     component: blogPost,
-  //     context: {
-  //       slug: post.node.fields.slug,
-  //       previous,
-  //       next,
-  //     },
-  //   })
-  // })
+  const { createPage } = actions
+  const blogPost = resolve(`./src/components/posts/Post.tsx`)
+  const { data, errors } = await graphql(`
+    {
+      posts {
+        postList {
+          name
+          last_edited_time
+          created_time
+          rowId
+          article {
+            type
+            html {
+              content
+            }
+          }
+        }
+      }
+    }
+  `)
+  if (errors) {
+    throw errors
+  }
+  const {
+    posts: { postList },
+  } = data
+  // Create blog post pages.
+  postList.forEach((post, index) => {
+    const previous = index === postList.length - 1 ? null : postList[index + 1]
+    const next = index === 0 ? null : postList[index - 1]
+    createPage({
+      path: `posts/${post.name}`,
+      component: blogPost,
+      context: {
+        post,
+        previous,
+        next,
+      },
+    })
+  })
 }
 
-export function onCreateNode({ node, actions, getNode }) {
-  // const { createNodeField } = actions
-  // if (node.internal.type === `MarkdownRemark`) {
-  //   const value = createFilePath({ node, getNode })
-  //   createNodeField({
-  //     name: `slug`,
-  //     node,
-  //     value: `blogs${value}`,
-  //   })
-  // }
-}
+// export function onCreateNode({ node, actions, getNode }) {
+//   const { createNodeField } = actions
+//   if (node.internal.type === `posts`) {
+//     node.postList.forEach((post) => {
+//       createNodeField({
+//         name: `${post.name}`,
+//         node,
+//         value: `/posts/${post.name}`,
+//       })
+//     })
+//   }
+// }

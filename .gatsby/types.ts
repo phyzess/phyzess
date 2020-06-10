@@ -18,3 +18,9 @@ export interface ISiteMetaData {
     url: string
   }
 }
+
+export interface INavItem {
+  path: string
+  name: string
+  as: 'a' | 'route'
+}

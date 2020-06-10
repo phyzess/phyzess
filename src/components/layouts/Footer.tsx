@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import bemFactor from '@utils/bemFactor'
-import Link from '@/components/link'
+import Link from '@components/link'
 import { FooterWrapper } from './index.styled'
 
 const cls = bemFactor('layout')
