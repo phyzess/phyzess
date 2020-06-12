@@ -8,6 +8,7 @@ export const $colorGray = '#BABECC'
 export const $colorTextBasic = '#61677C'
 export const $colorTextPrimary = '#AE1100'
 export const $colorTextActive = '#d21a06'
+export const $colorTextPrimaryReverse = '#00ad9e'
 export const $colorBg = '#EBECF0'
 export const $colorShadow = '#BABECC'
 export const $colorWhite = '#FFF'
@@ -64,7 +65,7 @@ export const theme = createMuiTheme({
           textShadow: `1px 1px 1px ${$colorWhite}`,
         },
         '::selection': {
-          background: '#00ad9e',
+          background: $colorTextPrimaryReverse,
           color: '#fff',
         },
         a: {

@@ -42,11 +42,3 @@ export const FooterWrapper = styled('footer')`
   ${flex}
   padding: 0.5rem;
 `
-
-export const Logo = styled.img`
-  margin: 0;
-  display: inline-block;
-  width: 35px;
-  height: 35px;
-  vertical-align: center;
-`
