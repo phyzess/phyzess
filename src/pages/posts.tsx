@@ -1,9 +1,9 @@
 import React from 'react'
-import { PageProps, Link, useStaticQuery, graphql } from 'gatsby'
+import { PageProps, useStaticQuery, graphql } from 'gatsby'
+import withThemeRoot from '@/theme'
 import Layout from '@components/layouts'
 import Seo from '@components/seo'
 import PostList from '@components/posts/PostList'
-// import { rhythm } from '@utils/typography'
 
 const Posts: React.FC<PageProps> = ({ location }) => {
   const {
@@ -38,4 +38,4 @@ const Posts: React.FC<PageProps> = ({ location }) => {
   )
 }
 
-export default Posts
+export default withThemeRoot(Posts)

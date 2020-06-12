@@ -12,11 +12,6 @@ const notion = new Nophy({
 
 const navList: INavItem[] = [
   {
-    path: '/',
-    name: 'phyzess',
-    as: 'route',
-  },
-  {
     path: '/posts',
     name: 'Posts',
     as: 'route',

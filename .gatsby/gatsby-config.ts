@@ -9,6 +9,7 @@ const builder = {
           '@pages': `src/pages`,
           '@utils': `src/utils`,
           '@templates': `src/templates`,
+          '@theme': `src/theme`,
         },
       },
     },
@@ -34,12 +35,12 @@ const builder = {
     //   },
     // },
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-typography`,
+    //   options: {
+    //     pathToConfigModule: `src/utils/typography`,
+    //   },
+    // },
     `gatsby-plugin-typescript`,
     `gatsby-plugin-eslint`,
     `gatsby-plugin-stylus`,

@@ -1,11 +1,11 @@
 import React from 'react'
 import { PageProps } from 'gatsby'
+import { Container } from '@material-ui/core'
 import bemFactor from '@utils/bemFactor'
 
 import { LayoutWrapper, Main } from './index.styled'
 import Header from './Header'
 import Footer from './Footer'
-import './reset.styl'
 
 const cls = bemFactor('layout')
 
@@ -22,8 +22,10 @@ const Layout: React.FC<ILayoutProps> = ({ location, children }) => {
     <LayoutWrapper className={cls('wrapper')}>
       <LocationContext.Provider value={location}>
         <Header />
-        <Main className={cls('main')}>{children}</Main>
-        <Footer />
+        <Main className={cls('main')}>
+          <Container maxWidth='md'>{children}</Container>
+          <Footer />
+        </Main>
       </LocationContext.Provider>
     </LayoutWrapper>
   )

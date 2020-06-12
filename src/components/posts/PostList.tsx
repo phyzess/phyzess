@@ -1,6 +1,11 @@
 import React from 'react'
+import styled from '@emotion/styled'
 import PostListItem from './PostListItem'
 import { IPost } from './types'
+
+const PostListWrapper = styled.div`
+  padding: 2em 0;
+`
 
 export interface IPostListProps {
   pageSize: number
@@ -9,11 +14,11 @@ export interface IPostListProps {
 
 const PostList: React.FC<IPostListProps> = ({ pageSize, posts }) => {
   return (
-    <div>
-      {posts.map((_) => (
-        <PostListItem key={_.rowId} postMeta={_} />
+    <PostListWrapper>
+      {posts.map((_, index) => (
+        <PostListItem key={_.rowId} postMeta={_} last={index === posts.length - 1} />
       ))}
-    </div>
+    </PostListWrapper>
   )
 }
 

@@ -16,3 +16,43 @@ declare module 'typography-theme-moraga' {
 
   export = Theme
 }
+
+declare namespace SiteMeta {
+  export interface INavItem {
+    path: string
+    name: string
+    as: 'a' | 'route'
+  }
+
+  export type TNavList = INavItem[]
+
+  export interface ISiteMetaData {
+    title: string
+    description: string
+    siteUrl: string
+    copyrightName: string
+    copyrightUrl: string
+    pageSize: number
+    netlifyUrl: string
+    useComment: boolean
+    commentDisqusShortName: string
+    useSearch: boolean
+    icon: {
+      name: string
+      url: string
+    }
+    avatar: {
+      name: string
+      url: string
+    }
+    navList: TNavList
+  }
+}
+
+declare module '*.svg'
+declare module '*.png'
+declare module '*.jpg'
+declare module '*.jpeg'
+declare module '*.gif'
+declare module '*.bmp'
+declare module '*.tiff'

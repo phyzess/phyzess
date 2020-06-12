@@ -1,6 +1,6 @@
 import React from 'react'
 import { PageProps } from 'gatsby'
-import withThemeRoot from '@components/HOC/withThemeRoot'
+import withThemeRoot from '@/theme'
 import Layout from '@components/layouts'
 import Landing from '@components/bios/Landing'
 import Seo from '@components/seo'

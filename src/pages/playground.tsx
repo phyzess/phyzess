@@ -1,8 +1,10 @@
 import React from 'react'
+import { PageProps } from 'gatsby'
+import withThemeRoot from '@/theme'
 import Layout from '@components/layouts'
 import Seo from '@components/seo'
 
-const Playground = ({ location }) => {
+const Playground: React.FC<PageProps> = ({ location }) => {
   return (
     <Layout location={location}>
       <Seo title='playground' />
@@ -11,4 +13,4 @@ const Playground = ({ location }) => {
   )
 }
 
-export default Playground
+export default withThemeRoot(Playground)

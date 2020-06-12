@@ -2,49 +2,64 @@ import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 import { css } from '@emotion/core'
 import styled from '@emotion/styled'
+import {
+  $colorTextPrimary,
+  $colorTextActive,
+  $innerShadowActive,
+  $transitionDuration,
+  $transitionTimingFunction,
+} from '@theme/theme'
 
-const baseStyle = css`
-  margin: 0 8px;
-  text-decoration: none;
-  display: inline-block;
-  position: relative;
-  ::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 109, 117, 0.8);
-    transform-origin: bottom right;
-    transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
-  }
-  :hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-  }
-`
-
-const StyledA = styled.a`
-  ${baseStyle}
-`
-
-const StyledGatsbyLink = styled(GatsbyLink)`
-  ${baseStyle}
-`
-
-interface ILinkProps {
+interface INeumorphism {
+  neumorphism?: boolean
+}
+interface ILinkProps extends INeumorphism {
   to: string
   as?: 'a' | 'route'
   [key: string]: any
 }
-const Link: React.FC<ILinkProps> = ({
-  as = 'route',
-  to = '',
-  children,
-  ...props
-}) =>
+
+const baseStyle = css`
+  padding-top: 0;
+  padding-right: 7px;
+  padding-bottom: 0;
+  padding-left: 7px;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  transition: all ${$transitionDuration} ${$transitionTimingFunction};
+`
+
+const normalStyle = css`
+  color: ${$colorTextPrimary};
+  &:hover {
+    color: ${$colorTextActive};
+  }
+`
+
+const neumorphismStyle = css`
+  padding-top: 2px;
+  padding-bottom: 2px;
+  display: inline-block;
+  border-radius: 5px;
+  font-weight: 600;
+  &:hover {
+    color: ${$colorTextPrimary};
+    box-shadow: ${$innerShadowActive};
+  }
+`
+
+const StyledA = styled.a<INeumorphism>`
+  ${baseStyle}
+  ${({ neumorphism }) => (neumorphism ? neumorphismStyle : normalStyle)}
+`
+
+const StyledGatsbyLink = styled(GatsbyLink)<INeumorphism>`
+  ${baseStyle}
+  ${({ neumorphism }) => (neumorphism ? neumorphismStyle : normalStyle)}
+`
+
+const Link: React.FC<ILinkProps> = ({ as = 'route', to = '', children, ...props }) =>
   as === 'a' ? (
     <StyledA href={to} className='phyzess-link' {...props}>
       {children}

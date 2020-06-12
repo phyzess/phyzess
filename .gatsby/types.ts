@@ -17,6 +17,7 @@ export interface ISiteMetaData {
     name: string
     url: string
   }
+  navList?: INavItem[]
 }
 
 export interface INavItem {

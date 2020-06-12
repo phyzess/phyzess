@@ -1,4 +1,4 @@
-import withThemeRoot from '@components/HOC/withThemeRoot'
+import withThemeRoot from '@/theme'
 import NotFound from '@components/notFound'
 
 export default withThemeRoot(NotFound)

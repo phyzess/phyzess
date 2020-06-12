@@ -1,3 +1,6 @@
+/**
+ * 会被 material-ui 覆盖
+ */
 import Typography from 'typography'
 import moragaTheme from 'typography-theme-moraga'
 
@@ -7,6 +10,7 @@ const theme = {
   bodyFontFamily: ['Nunito', 'Avenir', 'Helvetica', 'sans-serif'],
   baseFontSize: '16px',
 }
+
 theme.overrideThemeStyles = () => ({
   a: {
     color: '#08979c',

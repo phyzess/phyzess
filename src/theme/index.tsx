@@ -1,22 +1,10 @@
 import React from 'react'
-import { ThemeProvider, CssBaseline, createMuiTheme, StylesProvider, createGenerateClassName } from '@material-ui/core'
+import { ThemeProvider, CssBaseline, StylesProvider, createGenerateClassName } from '@material-ui/core'
 import { getDisplayName } from '@utils/getDisplayName'
+import { theme } from './theme'
 
 const generateClassName = createGenerateClassName({
   productionPrefix: 'phyzess',
-})
-
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#e7effe',
-      contrastText: '#6e7a8d',
-    },
-    secondary: {
-      main: '#77aaff',
-      contrastText: '#f1fcff',
-    },
-  },
 })
 
 const withThemeRoot = <P extends {}>(Component: React.ComponentType<P>): React.ComponentType<P> => {
