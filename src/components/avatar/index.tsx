@@ -1,6 +1,6 @@
 import React from 'react'
 import { Avatar as MuiAvatar, makeStyles } from '@material-ui/core'
-import { $colorWhite, $innerShadowActive, $transitionDuration, $transitionTimingFunction } from '@theme/theme'
+import { $colorWhite, $innerShadowActive, $transitionDuration, $transitionTimingFunction } from '@/root/theme'
 import logo from '@/../static/avatar.png'
 
 const useStyles = makeStyles({

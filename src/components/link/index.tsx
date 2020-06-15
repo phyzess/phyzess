@@ -8,66 +8,86 @@ import {
   $innerShadowActive,
   $transitionDuration,
   $transitionTimingFunction,
-} from '@theme/theme'
+} from '@/root/theme'
 
 interface INeumorphism {
   neumorphism?: boolean
+  active?: boolean
 }
 interface ILinkProps extends INeumorphism {
   to: string
   as?: 'a' | 'route'
-  [key: string]: any
 }
 
 const baseStyle = css`
+  position: relative;
+  display: inline-flex;
+  align-items: center;
   padding-top: 0;
   padding-right: 7px;
   padding-bottom: 0;
   padding-left: 7px;
   text-decoration: none;
-  display: inline-block;
-  position: relative;
   transition: all ${$transitionDuration} ${$transitionTimingFunction};
+
+  & > * {
+    flex: 1;
+  }
 `
 
-const normalStyle = css`
+export const activeText = css`
+  color: ${$colorTextActive};
+`
+
+export const activeNeumorphism = css`
+  color: ${$colorTextPrimary};
+  box-shadow: ${$innerShadowActive};
+`
+
+const textStyle = css`
   color: ${$colorTextPrimary};
   &:hover {
-    color: ${$colorTextActive};
+    ${activeText};
   }
 `
 
 const neumorphismStyle = css`
   padding-top: 2px;
   padding-bottom: 2px;
-  display: inline-block;
   border-radius: 5px;
   font-weight: 600;
   &:hover {
-    color: ${$colorTextPrimary};
-    box-shadow: ${$innerShadowActive};
+    ${activeNeumorphism}
   }
 `
 
+const getActiveStyle = (neumorphism?: boolean) => (neumorphism ? activeNeumorphism : activeText)
+
 const StyledA = styled.a<INeumorphism>`
   ${baseStyle}
-  ${({ neumorphism }) => (neumorphism ? neumorphismStyle : normalStyle)}
+  ${({ neumorphism }) => (neumorphism ? neumorphismStyle : textStyle)}
+  ${({ active, neumorphism }) => active && getActiveStyle(neumorphism)}
 `
 
 const StyledGatsbyLink = styled(GatsbyLink)<INeumorphism>`
   ${baseStyle}
-  ${({ neumorphism }) => (neumorphism ? neumorphismStyle : normalStyle)}
+  ${({ neumorphism }) => (neumorphism ? neumorphismStyle : textStyle)}
+  ${({ active, neumorphism }) => active && getActiveStyle(neumorphism)}
 `
 
-const Link: React.FC<ILinkProps> = ({ as = 'route', to = '', children, ...props }) =>
-  as === 'a' ? (
-    <StyledA href={to} className='phyzess-link' {...props}>
-      {children}
-    </StyledA>
-  ) : (
+const Link: React.FC<ILinkProps> = ({ as = 'route', to = '', children, ...props }) => {
+  if (as === 'a') {
+    return (
+      <StyledA href={to} className='phyzess-link' {...props}>
+        {children}
+      </StyledA>
+    )
+  }
+  return (
     <StyledGatsbyLink to={to} className='phyzess-link' {...props}>
       {children}
     </StyledGatsbyLink>
   )
+}
 
 export default Link

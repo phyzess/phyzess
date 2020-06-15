@@ -1,41 +1,32 @@
 import React from 'react'
 import { PageProps, useStaticQuery, graphql } from 'gatsby'
-import withThemeRoot from '@/theme'
+import withRoot from '@/root'
 import Layout from '@components/layouts'
 import Seo from '@components/seo'
 import PostList from '@components/posts/PostList'
 
-const Posts: React.FC<PageProps> = ({ location }) => {
+const Posts: React.FC<PageProps> = () => {
   const {
     siteMeta: { pageSize },
-    posts: { postList },
+    allPost: { nodes },
   } = useStaticQuery(graphql`
     query {
       siteMeta {
         pageSize
       }
-      posts {
-        postList {
-          name
-          last_edited_time
-          created_time
-          rowId
-          article {
-            type
-            html {
-              content
-            }
-          }
+      allPost(sort: { order: DESC, fields: created_time }) {
+        nodes {
+          ...FragPost
         }
       }
     }
   `)
   return (
-    <Layout location={location}>
+    <Layout>
       <Seo title='posts' />
-      <PostList pageSize={pageSize} posts={postList} />
+      <PostList pageSize={pageSize} posts={nodes} />
     </Layout>
   )
 }
 
-export default withThemeRoot(Posts)
+export default withRoot(Posts)

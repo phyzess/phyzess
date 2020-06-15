@@ -1,16 +1,16 @@
 import React from 'react'
 import { PageProps } from 'gatsby'
-import withThemeRoot from '@/theme'
+import withRoot from '@/root'
 import Layout from '@components/layouts'
 import Seo from '@components/seo'
 
-const Playground: React.FC<PageProps> = ({ location }) => {
+const Playground: React.FC<PageProps> = () => {
   return (
-    <Layout location={location}>
+    <Layout>
       <Seo title='playground' />
       playground
     </Layout>
   )
 }
 
-export default withThemeRoot(Playground)
+export default withRoot(Playground)

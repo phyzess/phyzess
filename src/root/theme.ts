@@ -1,22 +1,27 @@
 import { createMuiTheme } from '@material-ui/core'
 
-export const colorPrimary = '#e7effe'
-export const colorSecondary = '#77aaff'
+export const colorPrimary = '#f8807d'
+export const colorSecondary = '#0368FF'
+export const colorContrastText = '#f1fcff'
+export const colorWhite = '#fff'
+export const colorBlack = '#000'
+export const colorBg = '#EBECF0'
 
 // Neumorphism basic color
-export const $colorGray = '#BABECC'
-export const $colorTextBasic = '#61677C'
-export const $colorTextPrimary = '#AE1100'
+export const $colorPrimary = '#61677C'
+export const $colorSecondary = '#BABECC'
+export const $colorWhite = colorWhite
+// Neumorphism text color
+export const $colorTextBasic = $colorPrimary
+export const $colorTextPrimary = colorPrimary
 export const $colorTextActive = '#d21a06'
-export const $colorTextPrimaryReverse = '#00ad9e'
-export const $colorBg = '#EBECF0'
-export const $colorShadow = '#BABECC'
-export const $colorWhite = '#FFF'
+export const $colorTextPrimaryReverse = colorPrimary
+export const $colorBg = colorBg
 // Neumorphism shadow
-export const $outShadow = `-5px -5px 20px ${$colorWhite},  5px 5px 20px ${$colorShadow}`
-export const $outShadowActive = `-2px -2px 5px ${$colorWhite}, 2px 2px 5px ${$colorShadow}`
-export const $innerShadow = `inset 2px 2px 5px ${$colorShadow}, inset -5px -5px 10px ${$colorWhite}`
-export const $innerShadowActive = `inset 1px 1px 2px ${$colorShadow}, inset -1px -1px 2px ${$colorWhite}`
+export const $outShadow = `-5px -5px 20px ${$colorWhite},  5px 5px 20px ${$colorSecondary}`
+export const $outShadowActive = `-2px -2px 5px ${$colorWhite}, 2px 2px 5px ${$colorSecondary}`
+export const $innerShadow = `inset 2px 2px 5px ${$colorSecondary}, inset -5px -5px 10px ${$colorWhite}`
+export const $innerShadowActive = `inset 1px 1px 2px ${$colorSecondary}, inset -1px -1px 2px ${$colorWhite}`
 // Neumorphism animation
 export const $transitionDuration = '0.2s'
 export const $transitionTimingFunction = 'ease-in-out'
@@ -30,12 +35,12 @@ const reduceHeaders = () =>
       [cur]: {
         fontFamily: headerFontFamily,
         fontWeight: 700,
-        color: $colorGray,
+        color: $colorPrimary,
       },
     }),
     {}
   )
-const reduceBodyFontFamily = () =>
+const reduceBody = () =>
   ['body1', 'body2'].reduce(
     (acc, cur) => ({ ...acc, [cur]: { fontFamily: bodyFontFamily, color: $colorTextBasic } }),
     {}
@@ -45,16 +50,16 @@ export const theme = createMuiTheme({
   palette: {
     primary: {
       main: colorPrimary,
-      contrastText: '#6e7a8d',
+      contrastText: colorContrastText,
     },
     secondary: {
       main: colorSecondary,
-      contrastText: '#f1fcff',
+      contrastText: colorContrastText,
     },
   },
   typography: {
     ...reduceHeaders(),
-    ...reduceBodyFontFamily(),
+    ...reduceBody(),
   },
   overrides: {
     MuiCssBaseline: {
@@ -66,7 +71,8 @@ export const theme = createMuiTheme({
         },
         '::selection': {
           background: $colorTextPrimaryReverse,
-          color: '#fff',
+          color: colorContrastText,
+          textShadow: 'none',
         },
         a: {
           color: $colorTextBasic,

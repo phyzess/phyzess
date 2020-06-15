@@ -4,7 +4,7 @@ import { Grid, makeStyles } from '@material-ui/core'
 import bemFactor from '@utils/bemFactor'
 import Link from '@components/link'
 import Avatar from '@components/avatar'
-import { LocationContext } from './index'
+import RouteContext from '@root/routeContext'
 import { HeaderWrapper } from './index.styled'
 
 const cls = bemFactor('layout')
@@ -26,7 +26,7 @@ interface IQueriedData {
 }
 
 const Header: React.FC<any> = () => {
-  const { pathname } = useContext(LocationContext)
+  const { pathname } = useContext(RouteContext)
   const {
     siteMeta: { navList },
   }: IQueriedData = useStaticQuery(graphql`
@@ -69,7 +69,7 @@ const Header: React.FC<any> = () => {
         >
           {navList.map(({ path, name, as }) => (
             <Grid item xs='auto' key={path} zeroMinWidth>
-              <Link to={path} as={as} key={path} neumorphism>
+              <Link to={path} as={as} neumorphism active={pathname === path}>
                 {name}
               </Link>
             </Grid>

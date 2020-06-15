@@ -1,5 +1,4 @@
 import { resolve } from 'path'
-import { createFilePath } from 'gatsby-source-filesystem'
 import dayjs from 'dayjs'
 import downloader from 'image-downloader'
 import { token, siteConfigPageUrl, postListPageUrl } from '../nophyConfig'
@@ -94,16 +93,19 @@ export async function sourceNodes({ actions: { createNode }, createNodeId, creat
   console.log('🦑 fetching post list data complete >>>')
 
   console.log('🦑 generating posts start >>>')
-  createNode({
-    postList: posts,
-    name: `posts`,
-    type: `posts`,
-    id: createNodeId(`posts@${dayjs().valueOf()}`),
-    internal: {
-      type: `posts`,
-      contentDigest: createContentDigest(posts),
-    },
-  })
+  posts.forEach((post) =>
+    createNode({
+      ...post,
+      id: createNodeId(`post-${post.rowId}@${dayjs().valueOf()}`),
+      parent: null,
+      children: [],
+      internal: {
+        type: `Post`,
+        content: JSON.stringify(post),
+        contentDigest: createContentDigest(post),
+      },
+    })
+  )
   console.log('🦑 generating posts end <<<')
 }
 
@@ -112,9 +114,10 @@ export async function createPages({ graphql, actions }) {
   const blogPost = resolve(`./src/components/posts/Post.tsx`)
   const { data, errors } = await graphql(`
     {
-      posts {
-        postList {
+      allPost(sort: { order: DESC, fields: created_time }) {
+        nodes {
           name
+          tags
           last_edited_time
           created_time
           rowId
@@ -132,12 +135,12 @@ export async function createPages({ graphql, actions }) {
     throw errors
   }
   const {
-    posts: { postList },
+    allPost: { nodes },
   } = data
   // Create blog post pages.
-  postList.forEach((post, index) => {
-    const previous = index === postList.length - 1 ? null : postList[index + 1]
-    const next = index === 0 ? null : postList[index - 1]
+  nodes.forEach((post, index) => {
+    const previous = index === nodes.length - 1 ? null : nodes[index + 1]
+    const next = index === 0 ? null : nodes[index - 1]
     createPage({
       path: `posts/${post.name}`,
       component: blogPost,

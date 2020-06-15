@@ -1,4 +1,4 @@
-import withThemeRoot from '@/theme'
+import withRoot from '@/root'
 import NotFound from '@components/notFound'
 
-export default withThemeRoot(NotFound)
+export default withRoot(NotFound)

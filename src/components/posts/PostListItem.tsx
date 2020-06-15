@@ -1,32 +1,54 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Card, CardActionArea, CardContent, Typography, Divider, makeStyles } from '@material-ui/core'
-import { Link } from 'gatsby'
-import { $colorShadow } from '@theme/theme'
+import DateRangeIcon from '@material-ui/icons/DateRange'
+import styled from '@emotion/styled'
+import dayjs from 'dayjs'
+import Link from '@components/link'
+import { TagGroup } from '@components/tag'
+import { $colorSecondary, $colorTextBasic } from '@/root/theme'
 import { IPost } from './types'
 
 const useStyles = makeStyles({
   root: {
     maxWidth: 800,
     margin: '0 auto',
+    padding: '10px 36px',
   },
   contentRoot: {
-    padding: '20px 36px',
+    padding: '10px 0',
   },
   dividerRoot: {
-    margin: '2em auto',
+    margin: '2.5em auto',
     width: '40%',
-    backgroundColor: $colorShadow,
+    backgroundColor: $colorSecondary,
+  },
+  timeStampRoot: {
+    marginLeft: '0.3em',
+    height: '20px',
+    fontSize: '1em',
+    color: $colorTextBasic,
+  },
+  introRoot: {
+    marginTop: '1em',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    display: '-webkit-box',
+    '-webkit-line-clamp': 2,
+    '-webkit-box-orient': 'vertical',
   },
 })
+
+const SubTitleContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`
 
 interface IPostListItemProps {
   postMeta: IPost
   last?: boolean
 }
-const PostListItem: React.FC<IPostListItemProps> = ({
-  postMeta: { name, created_time, last_edited_time, article },
-  last,
-}) => {
+const PostListItem: React.FC<IPostListItemProps> = ({ postMeta: { name, created_time, article, tags }, last }) => {
   const cls = useStyles()
 
   const GatsbyLink = (props: any) => <Link to={`/posts/${name}`} {...props} />
@@ -39,9 +61,18 @@ const PostListItem: React.FC<IPostListItemProps> = ({
             <Typography gutterBottom variant='h5' component='h2'>
               {name}
             </Typography>
-            <Typography component='p'>{article[0].html[0].content}</Typography>
+            <SubTitleContainer>
+              <DateRangeIcon fontSize='small' style={{ color: $colorTextBasic }} />
+              <Typography variant='h6' component='span' classes={{ root: cls.timeStampRoot }}>
+                {dayjs(created_time).format('MMM DD, YYYY')}
+              </Typography>
+            </SubTitleContainer>
+            <Typography component='p' classes={{ root: cls.introRoot }}>
+              {article[0].html[0].content}
+            </Typography>
           </CardContent>
         </CardActionArea>
+        <TagGroup tags={tags} style={{ justifyContent: 'flex-end' }} />
       </Card>
       {!last && <Divider classes={{ root: cls.dividerRoot }} />}
     </>
