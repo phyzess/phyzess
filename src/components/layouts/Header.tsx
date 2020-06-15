@@ -69,7 +69,7 @@ const Header: React.FC<any> = () => {
         >
           {navList.map(({ path, name, as }) => (
             <Grid item xs='auto' key={path} zeroMinWidth>
-              <Link to={path} as={as} neumorphism active={pathname === path}>
+              <Link to={path} as={as} neumorphism active={pathname.startsWith(path)}>
                 {name}
               </Link>
             </Grid>

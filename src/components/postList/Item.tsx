@@ -1,11 +1,11 @@
-import React, { useMemo } from 'react'
-import { Card, CardActionArea, CardContent, Typography, Divider, makeStyles } from '@material-ui/core'
+import React from 'react'
+import { Card, CardActionArea, CardContent, Typography, makeStyles } from '@material-ui/core'
 import DateRangeIcon from '@material-ui/icons/DateRange'
 import styled from '@emotion/styled'
 import dayjs from 'dayjs'
 import Link from '@components/link'
 import { TagGroup } from '@components/tag'
-import { $colorSecondary, $colorTextBasic } from '@/root/theme'
+import { $colorTextBasic } from '@/root/theme'
 import { IPost } from './types'
 
 const useStyles = makeStyles({
@@ -17,11 +17,6 @@ const useStyles = makeStyles({
   contentRoot: {
     padding: '10px 0',
   },
-  dividerRoot: {
-    margin: '2.5em auto',
-    width: '40%',
-    backgroundColor: $colorSecondary,
-  },
   timeStampRoot: {
     marginLeft: '0.3em',
     height: '20px',
@@ -30,6 +25,8 @@ const useStyles = makeStyles({
   },
   introRoot: {
     marginTop: '1em',
+    height: '3em',
+    opacity: 0.8,
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     display: '-webkit-box',
@@ -42,6 +39,11 @@ const SubTitleContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+`
+
+const StyledDivider = styled.div`
+  height: 5vw;
+  max-height: 5vw;
 `
 
 interface IPostListItemProps {
@@ -74,7 +76,7 @@ const PostListItem: React.FC<IPostListItemProps> = ({ postMeta: { name, created_
         </CardActionArea>
         <TagGroup tags={tags} style={{ justifyContent: 'flex-end' }} />
       </Card>
-      {!last && <Divider classes={{ root: cls.dividerRoot }} />}
+      {!last && <StyledDivider />}
     </>
   )
 }

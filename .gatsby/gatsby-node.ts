@@ -111,7 +111,7 @@ export async function sourceNodes({ actions: { createNode }, createNodeId, creat
 
 export async function createPages({ graphql, actions }) {
   const { createPage } = actions
-  const blogPost = resolve(`./src/components/posts/Post.tsx`)
+  const blogPost = resolve(`./src/components/post/index.tsx`)
   const { data, errors } = await graphql(`
     {
       allPost(sort: { order: DESC, fields: created_time }) {

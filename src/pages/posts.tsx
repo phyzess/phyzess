@@ -3,7 +3,7 @@ import { PageProps, useStaticQuery, graphql } from 'gatsby'
 import withRoot from '@/root'
 import Layout from '@components/layouts'
 import Seo from '@components/seo'
-import PostList from '@components/posts/PostList'
+import PostList from '@/components/postList'
 
 const Posts: React.FC<PageProps> = () => {
   const {

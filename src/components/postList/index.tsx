@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 import RouteContext from '@root/routeContext'
 import { $colorTextBasic } from '@root/theme'
 import Link from '@components/link'
-import PostListItem from './PostListItem'
+import PostListItem from './Item'
 import { IPost } from './types'
 
 const useStyle = makeStyles({
