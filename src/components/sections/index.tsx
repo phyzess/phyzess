@@ -8,6 +8,7 @@ import Image from './Image'
 import List from './List'
 import Divider from './Divider'
 import Code from './Code'
+import Page from './Page'
 
 export const NotSupport: React.FC<IArticleSectionProps> = ({ section: { type } }) => <div> 「{type}」 Not Support</div>
 
@@ -23,8 +24,8 @@ export const SectionMap: ISectionMap = {
   to_do: List,
   divider: Divider,
   code: Code,
+  page: Page,
   // 未支持的区分类型
-  page: NotSupport,
   collection_view_page: NotSupport,
   table_of_contents: NotSupport,
   toggle: NotSupport,

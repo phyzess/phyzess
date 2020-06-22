@@ -29,9 +29,6 @@ const ArticleSection: React.FC<IArticleSectionProps> = ({ section, previous, nex
 }
 
 const Article: React.FC<IArticleProps> = memo(({ article }) => {
-  // console.log('===Log Start===')
-  // console.log(article)
-  // console.log('---Log End---')
   let sameWithPrevCount = 0
   return (
     <article>

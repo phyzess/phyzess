@@ -8,14 +8,18 @@ const StyledText = styled.div`
   white-space: pre-wrap;
   word-break: break-word;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.75;
 `
 
-const Text: React.FC<IArticleSectionProps> = React.memo(({ section: { html }, ...restProps }) => (
+const Text: React.FC<IArticleSectionProps> = React.memo(({ section: { html }, sameWithPrevCount, ...restProps }) => (
   <StyledText>
     {html.map(({ content, format }, index) => {
       if (!format || format.length === 0) {
-        return <span {...restProps}>{content}</span>
+        return (
+          <span key={index} {...restProps}>
+            {content}
+          </span>
+        )
       }
 
       const usedFormats: IFormat[] = format.filter((i) => i.type !== 'link') as IFormat[]

@@ -16,6 +16,9 @@ const withRoot = <P extends PageProps>(Component: React.ComponentType<P>): React
     public static displayName = `${getDisplayName(Component)}WithRoot`
 
     public render() {
+      /**
+       * @todo 这里为啥 打印 this.props.location 和 this.props.location.state 会得到两个完全不同的 state 结果？
+       */
       const route = {
         location: this.props.location,
         pageContext: this.props.pageContext,

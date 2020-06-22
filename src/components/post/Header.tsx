@@ -8,6 +8,7 @@ import Timestamp from '@components/timestamp'
 
 interface IHeaderProps {
   title: string
+  backTo: string
   createTime: number
 }
 
@@ -29,12 +30,9 @@ const StyledInfos = styled.header`
   margin: 0.4em 0;
 `
 
-const Header: React.FC<IHeaderProps> = ({ title, createTime }) => {
+const Header: React.FC<IHeaderProps> = ({ title, backTo, createTime }) => {
   const {
-    location: {
-      pathname,
-      state: { prevPath },
-    },
+    location: { pathname },
   } = useContext(RouteContext)
   const cls = useStyle()
 
@@ -42,7 +40,7 @@ const Header: React.FC<IHeaderProps> = ({ title, createTime }) => {
     <header>
       <Title>
         <Breadcrumbs classes={{ separator: cls.breadcrumbsSeparator }} aria-label='breadcrumb'>
-          <Link to={prevPath} colorType='secondary'>
+          <Link to={backTo} colorType='secondary'>
             Posts
           </Link>
           <Link to={pathname} colorType='primary'>

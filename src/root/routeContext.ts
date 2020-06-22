@@ -8,9 +8,7 @@ type Location = PageProps['location'] & {
   }
 }
 
-interface TRouteContext extends Pick<PageProps, 'pageContext' | 'pageResources' | 'path' | 'pathContext' | 'uri'> {
-  location: Location
-}
+type TRouteContext = Pick<PageProps, 'location' | 'pageContext' | 'pageResources' | 'path' | 'pathContext' | 'uri'>
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 const defaultRouteContextValue = {} as TRouteContext
