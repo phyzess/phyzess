@@ -1,23 +1,28 @@
 import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
-import { css } from '@emotion/core'
-import styled from '@emotion/styled'
+import { css, SerializedStyles } from '@emotion/core'
 import {
+  $colorTextDefault,
   $colorTextPrimary,
+  $colorTextSecondary,
   $colorTextActive,
   $innerShadowActive,
   $transitionDuration,
   $transitionTimingFunction,
 } from '@/root/theme'
 
-interface INeumorphism {
-  neumorphism?: boolean
-  active?: boolean
-}
-interface ILinkProps extends INeumorphism {
+type Color = 'default' | 'primary' | 'secondary'
+
+interface ILinkProps {
   to: string
   as?: 'a' | 'route'
+  neumorphism?: boolean
+  colorType?: Color
+  active?: boolean
+  style?: React.CSSProperties
 }
+
+type TGetCSSStyle = (colorType: Color, neumorphism: boolean, active: boolean) => SerializedStyles
 
 const baseStyle = css`
   position: relative;
@@ -45,7 +50,6 @@ export const activeNeumorphism = css`
 `
 
 const textStyle = css`
-  color: ${$colorTextPrimary};
   &:hover {
     ${activeText};
   }
@@ -61,32 +65,49 @@ const neumorphismStyle = css`
   }
 `
 
-const getActiveStyle = (neumorphism?: boolean) => (neumorphism ? activeNeumorphism : activeText)
+const getActiveStyle = (neumorphism: boolean) => (neumorphism ? activeNeumorphism : activeText)
 
-const StyledA = styled.a<INeumorphism>`
+const getColor = (colorType: Color, neumorphism: boolean) => {
+  switch (colorType) {
+    case 'primary':
+      return `color:${$colorTextDefault};`
+    case 'secondary':
+      return `color:${$colorTextSecondary};`
+    default:
+      return neumorphism ? `color:${$colorTextDefault};` : `color:${$colorTextPrimary};`
+  }
+}
+
+const switchTypeStyle = (neumorphism: boolean) => (neumorphism ? neumorphismStyle : textStyle)
+
+const getCSSStyle: TGetCSSStyle = (colorType, neumorphism, active) => css`
   ${baseStyle}
-  ${({ neumorphism }) => (neumorphism ? neumorphismStyle : textStyle)}
-  ${({ active, neumorphism }) => active && getActiveStyle(neumorphism)}
+  ${getColor(colorType, neumorphism)}
+  ${switchTypeStyle(neumorphism)}
+  ${active && getActiveStyle(neumorphism)}
 `
 
-const StyledGatsbyLink = styled(GatsbyLink)<INeumorphism>`
-  ${baseStyle}
-  ${({ neumorphism }) => (neumorphism ? neumorphismStyle : textStyle)}
-  ${({ active, neumorphism }) => active && getActiveStyle(neumorphism)}
-`
-
-const Link: React.FC<ILinkProps> = ({ as = 'route', to = '', children, ...props }) => {
+const Link: React.FC<ILinkProps> = ({
+  as = 'route',
+  to = '',
+  children,
+  colorType = 'default',
+  neumorphism,
+  active,
+  ...props
+}) => {
   if (as === 'a') {
     return (
-      <StyledA href={to} className='phyzess-link' {...props}>
+      <a href={to} className='phyzess-link' css={getCSSStyle(colorType, !!neumorphism, !!active)} {...props}>
         {children}
-      </StyledA>
+      </a>
     )
   }
+
   return (
-    <StyledGatsbyLink to={to} className='phyzess-link' {...props}>
+    <GatsbyLink to={to} className='phyzess-link' css={getCSSStyle(colorType, !!neumorphism, !!active)} {...props}>
       {children}
-    </StyledGatsbyLink>
+    </GatsbyLink>
   )
 }
 

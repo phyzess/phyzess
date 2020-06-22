@@ -3,6 +3,7 @@ import dayjs from 'dayjs'
 import downloader from 'image-downloader'
 import { token, siteConfigPageUrl, postListPageUrl } from '../nophyConfig'
 import Nophy, { parseImageUrl } from '@phyzess/nophy'
+import { SchemaPostTypeDef } from './schema'
 import { ISiteMetaData, INavItem } from './types'
 
 const notion = new Nophy({
@@ -116,17 +117,8 @@ export async function createPages({ graphql, actions }) {
     {
       allPost(sort: { order: DESC, fields: created_time }) {
         nodes {
+          id
           name
-          tags
-          last_edited_time
-          created_time
-          rowId
-          article {
-            type
-            html {
-              content
-            }
-          }
         }
       }
     }
@@ -138,20 +130,27 @@ export async function createPages({ graphql, actions }) {
     allPost: { nodes },
   } = data
   // Create blog post pages.
-  nodes.forEach((post, index) => {
+  nodes.forEach(({ id, name }, index) => {
     const previous = index === nodes.length - 1 ? null : nodes[index + 1]
     const next = index === 0 ? null : nodes[index - 1]
     createPage({
-      path: `posts/${post.name}`,
+      path: `posts/${name}`,
       component: blogPost,
       context: {
-        post,
+        id,
+        name,
         previous,
         next,
       },
     })
   })
 }
+
+// export function createSchemaCustomization({ actions }) {
+//   const { createTypes } = actions
+
+//   createTypes(SchemaPostTypeDef)
+// }
 
 // export function onCreateNode({ node, actions, getNode }) {
 //   const { createNodeField } = actions

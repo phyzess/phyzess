@@ -3,7 +3,6 @@ import { css } from '@emotion/core'
 
 const flex = css`
   display: flex;
-  justify-content: center;
   align-items: center;
   position: relative;
   width: 100%;
@@ -11,13 +10,12 @@ const flex = css`
 
 export const LayoutWrapper = styled.div`
   ${flex}
-  flex-direction: column;
+  flex-flow: column nowrap;
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  width: 100%;
   overflow: hidden;
 `
 
@@ -40,5 +38,6 @@ export const HeaderWrapper = styled('header')`
 
 export const FooterWrapper = styled('footer')`
   ${flex}
+  justify-content: center;
   padding: 0.5rem;
 `

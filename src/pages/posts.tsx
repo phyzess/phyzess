@@ -16,7 +16,7 @@ const Posts: React.FC<PageProps> = () => {
       }
       allPost(sort: { order: DESC, fields: created_time }) {
         nodes {
-          ...FragPost
+          ...PostFragment
         }
       }
     }

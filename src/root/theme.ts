@@ -12,7 +12,8 @@ export const $colorPrimary = '#61677C'
 export const $colorSecondary = '#BABECC'
 export const $colorWhite = colorWhite
 // Neumorphism text color
-export const $colorTextBasic = $colorPrimary
+export const $colorTextDefault = $colorPrimary
+export const $colorTextSecondary = $colorSecondary
 export const $colorTextPrimary = colorPrimary
 export const $colorTextActive = '#d21a06'
 export const $colorTextPrimaryReverse = colorPrimary
@@ -42,7 +43,7 @@ const reduceHeaders = () =>
   )
 const reduceBody = () =>
   ['body1', 'body2'].reduce(
-    (acc, cur) => ({ ...acc, [cur]: { fontFamily: bodyFontFamily, color: $colorTextBasic } }),
+    (acc, cur) => ({ ...acc, [cur]: { fontFamily: bodyFontFamily, color: $colorTextDefault } }),
     {}
   )
 
@@ -66,7 +67,7 @@ export const theme = createMuiTheme({
       '@global': {
         html: {
           backgroundColor: $colorBg,
-          color: $colorTextBasic,
+          color: $colorTextDefault,
           textShadow: `1px 1px 1px ${$colorWhite}`,
         },
         '::selection': {
@@ -75,7 +76,7 @@ export const theme = createMuiTheme({
           textShadow: 'none',
         },
         a: {
-          color: $colorTextBasic,
+          color: $colorTextDefault,
         },
       },
     },

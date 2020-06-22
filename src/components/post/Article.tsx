@@ -1,0 +1,60 @@
+import React, { memo } from 'react'
+import { Typography, makeStyles } from '@material-ui/core'
+import { IPage } from '@phyzess/nophy'
+import { SectionMap, IArticleSectionProps } from '@components/sections'
+
+type Article = IPage['article']
+interface IArticleProps {
+  article: Article
+}
+
+const useArticleSectionStyle = makeStyles({
+  root: {
+    margin: '4px 0',
+    textShadow: 'none',
+    overflow: 'hidden',
+  },
+})
+
+const ArticleSection: React.FC<IArticleSectionProps> = ({ section, previous, next, sameWithPrevCount }) => {
+  const cls = useArticleSectionStyle()
+  const SectionComponent = SectionMap[section.type]
+  return (
+    <Typography classes={{ root: cls.root }} component='section'>
+      {SectionComponent && (
+        <SectionComponent section={section} previous={previous} next={next} sameWithPrevCount={sameWithPrevCount} />
+      )}
+    </Typography>
+  )
+}
+
+const Article: React.FC<IArticleProps> = memo(({ article }) => {
+  // console.log('===Log Start===')
+  // console.log(article)
+  // console.log('---Log End---')
+  let sameWithPrevCount = 0
+  return (
+    <article>
+      {article.map((section, index) => {
+        const previous = article[index - 1]
+        const next = article[index + 1]
+        if (section.type === 'numbered_list') {
+          sameWithPrevCount++
+        } else {
+          sameWithPrevCount = 0
+        }
+        return (
+          <ArticleSection
+            key={section.id}
+            section={section}
+            previous={previous}
+            next={next}
+            sameWithPrevCount={sameWithPrevCount}
+          />
+        )
+      })}
+    </article>
+  )
+})
+
+export default Article

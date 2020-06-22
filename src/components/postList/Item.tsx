@@ -1,11 +1,9 @@
 import React from 'react'
 import { Card, CardActionArea, CardContent, Typography, makeStyles } from '@material-ui/core'
-import DateRangeIcon from '@material-ui/icons/DateRange'
 import styled from '@emotion/styled'
-import dayjs from 'dayjs'
 import Link from '@components/link'
 import { TagGroup } from '@components/tag'
-import { $colorTextBasic } from '@/root/theme'
+import Timestamp from '@components/timestamp'
 import { IPost } from './types'
 
 const useStyles = makeStyles({
@@ -16,12 +14,6 @@ const useStyles = makeStyles({
   },
   contentRoot: {
     padding: '10px 0',
-  },
-  timeStampRoot: {
-    marginLeft: '0.3em',
-    height: '20px',
-    fontSize: '1em',
-    color: $colorTextBasic,
   },
   introRoot: {
     marginTop: '1em',
@@ -64,10 +56,7 @@ const PostListItem: React.FC<IPostListItemProps> = ({ postMeta: { name, created_
               {name}
             </Typography>
             <SubTitleContainer>
-              <DateRangeIcon fontSize='small' style={{ color: $colorTextBasic }} />
-              <Typography variant='h6' component='span' classes={{ root: cls.timeStampRoot }}>
-                {dayjs(created_time).format('MMM DD, YYYY')}
-              </Typography>
+              <Timestamp timestamp={created_time} />
             </SubTitleContainer>
             <Typography component='p' classes={{ root: cls.introRoot }}>
               {article[0].html[0].content}

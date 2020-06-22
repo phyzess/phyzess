@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby'
 
-export const FragPost = graphql`
-  fragment FragPost on Post {
+export const PostFragment = graphql`
+  fragment PostFragment on Post {
     name
     tags
     last_edited_time

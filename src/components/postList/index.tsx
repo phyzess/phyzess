@@ -2,8 +2,8 @@ import React, { useContext } from 'react'
 import { makeStyles } from '@material-ui/core'
 import { Pagination, PaginationItem } from '@material-ui/lab'
 import styled from '@emotion/styled'
-import RouteContext from '@root/routeContext'
-import { $colorTextBasic } from '@root/theme'
+import { RouteContext } from '@/root'
+import { $colorTextDefault } from '@root/theme'
 import Link from '@components/link'
 import PostListItem from './Item'
 import { IPost } from './types'
@@ -16,7 +16,7 @@ const useStyle = makeStyles({
     maxWidth: '800px',
   },
   paginationItemRoot: {
-    color: $colorTextBasic,
+    color: $colorTextDefault,
     backgroundColor: 'transparent',
     '&:hover': {
       backgroundColor: 'transparent',
@@ -43,7 +43,9 @@ export interface IPostListProps {
 const PostList: React.FC<IPostListProps> = ({ pageSize, posts }) => {
   const cls = useStyle()
 
-  const { search } = useContext(RouteContext)
+  const {
+    location: { search },
+  } = useContext(RouteContext)
   const pageCount = Math.ceil(posts.length / pageSize)
   const pageMatch = search.match(/^\?page=(\d)/)
   const page = pageMatch ? Number(pageMatch[1]) : 1

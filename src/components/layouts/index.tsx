@@ -8,7 +8,11 @@ import Footer from './Footer'
 
 const cls = bemFactor('layout')
 
-const Layout: React.FC<{}> = ({ children }) => (
+interface ILayoutProps {
+  children: NonNullable<React.ReactNode>
+}
+
+const Layout: React.FC<ILayoutProps> = ({ children }) => (
   <LayoutWrapper className={cls('wrapper')}>
     <Header />
     <Main className={cls('main')}>
