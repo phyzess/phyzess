@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
+import { useLocation } from '@reach/router'
 import { makeStyles } from '@material-ui/core'
 import { Pagination, PaginationItem } from '@material-ui/lab'
 import styled from '@emotion/styled'
-import { RouteContext } from '@/root'
 import { $colorTextDefault } from '@root/theme'
 import Link from '@components/link'
 import PostListItem from './Item'
@@ -42,10 +42,8 @@ export interface IPostListProps {
 
 const PostList: React.FC<IPostListProps> = ({ pageSize, posts }) => {
   const cls = useStyle()
+  const { search } = useLocation()
 
-  const {
-    location: { search },
-  } = useContext(RouteContext)
   const pageCount = Math.ceil(posts.length / pageSize)
   const pageMatch = search.match(/^\?page=(\d)/)
   const page = pageMatch ? Number(pageMatch[1]) : 1

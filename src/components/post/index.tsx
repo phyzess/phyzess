@@ -42,11 +42,10 @@ const Post: React.FC<IPostProps> = ({
 }) => {
   const cls = useStyles()
 
-  const backTo = '/posts'
   return (
     <Layout>
       <Container classes={{ root: cls.containerRoot }} maxWidth='lg'>
-        <Header title={name} backTo={backTo} createTime={created_time} />
+        <Header title={name} createTime={created_time} />
         <Article article={article} />
         <Footer next={next} previous={previous} lastEditedTime={last_edited_time} tags={tags} />
       </Container>

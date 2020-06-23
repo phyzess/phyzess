@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
+import { useLocation } from '@reach/router'
 import { Grid, makeStyles } from '@material-ui/core'
 import bemFactor from '@utils/bemFactor'
 import Link from '@components/link'
 import Avatar from '@components/avatar'
-import { RouteContext } from '@/root'
 import { HeaderWrapper } from './index.styled'
 
 const cls = bemFactor('layout')
@@ -26,9 +26,7 @@ interface IQueriedData {
 }
 
 const Header: React.FC<any> = () => {
-  const {
-    location: { pathname },
-  } = useContext(RouteContext)
+  const { pathname } = useLocation()
   const {
     siteMeta: { navList },
   }: IQueriedData = useStaticQuery(graphql`

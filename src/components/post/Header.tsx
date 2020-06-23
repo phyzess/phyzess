@@ -1,15 +1,19 @@
-import React, { useContext } from 'react'
+import React from 'react'
+import { useLocation } from '@reach/router'
 import { Typography, Breadcrumbs, makeStyles } from '@material-ui/core'
 import styled from '@emotion/styled'
-import { RouteContext } from '@/root'
 import { $colorTextSecondary } from '@root/theme'
 import Link from '@components/link'
 import Timestamp from '@components/timestamp'
 
 interface IHeaderProps {
   title: string
-  backTo: string
   createTime: number
+}
+
+interface ICustomState {
+  prevState: string
+  [key: string]: any
 }
 
 const useStyle = makeStyles({
@@ -30,12 +34,14 @@ const StyledInfos = styled.header`
   margin: 0.4em 0;
 `
 
-const Header: React.FC<IHeaderProps> = ({ title, backTo, createTime }) => {
-  const {
-    location: { pathname },
-  } = useContext(RouteContext)
+const Header: React.FC<IHeaderProps> = ({ title, createTime }) => {
+  const { pathname, state } = useLocation()
   const cls = useStyle()
 
+  let backTo = (state as ICustomState).prevPath
+  if (!/^\/posts(\?page=\d)?$/.test(backTo)) {
+    backTo = '/posts'
+  }
   return (
     <header>
       <Title>
