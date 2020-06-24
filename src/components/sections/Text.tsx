@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import Link from '@components/link'
+import Equation from '@components/equation'
 import { getFormat } from './formats'
 import { IArticleSectionProps, IFormat } from './types'
 
@@ -24,14 +25,19 @@ const Text: React.FC<IArticleSectionProps> = React.memo(({ section: { html }, sa
 
       const usedFormats: IFormat[] = format.filter((i) => i.type !== 'link') as IFormat[]
       const formatCSS = usedFormats.map((i) => getFormat[i.type](i))
-
       const linkFormat = format.find((i) => i.type === 'link')
+      const equationFormat = format.find((i) => i.type === 'inlineEquation')
+
       if (linkFormat) {
         return (
           <Link key={index} css={formatCSS} as='a' to={linkFormat.url as string}>
             {content}
           </Link>
         )
+      }
+
+      if (equationFormat) {
+        return <Equation key={index} math={content} mode='inline' />
       }
 
       return (

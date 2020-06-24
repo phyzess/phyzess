@@ -5,6 +5,7 @@ export const colorSecondary = '#0368FF'
 export const colorContrastText = '#f1fcff'
 export const colorWhite = '#fff'
 export const colorBlack = '#000'
+export const colorRed = '#AE1100'
 export const colorBg = '#EBECF0'
 
 // Neumorphism basic color
@@ -26,6 +27,8 @@ export const $innerShadowActive = `inset 1px 1px 2px ${$colorSecondary}, inset -
 // Neumorphism animation
 export const $transitionDuration = '0.2s'
 export const $transitionTimingFunction = 'ease-in-out'
+// Neumorphism border
+export const $borderRadius = '5px'
 
 export const headerFontFamily = ['Nunito', 'Source Sans Pro', 'sans-serif'].join(',')
 export const bodyFontFamily = ['Nunito', 'Avenir', 'Helvetica', 'sans-serif'].join(',')
@@ -93,6 +96,11 @@ export const theme = createMuiTheme({
     MuiCardActionArea: {
       focusHighlight: {
         backgroundColor: 'transparent',
+      },
+    },
+    MuiExpansionPanel: {
+      root: {
+        boxShadow: $outShadow,
       },
     },
   },

@@ -21,8 +21,9 @@
     "@material-ui/core": "^4.10.2",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
-    "@phyzess/nophy": "^1.4.5",
+    "@phyzess/nophy": "^1.5.0",
     "dayjs": "^1.8.28",
+    "katex": "^0.11.1",
     "normalize.css": "^8.0.1",
     "prismjs": "^1.20.0",
     "react": "^16.13.1",
@@ -34,6 +35,7 @@
   "devDependencies": {
     "@babel/core": "^7.10.2",
     "@babel/plugin-proposal-class-properties": "^7.10.1",
+    "@types/katex": "^0.11.0",
     "@types/react-helmet": "^6.0.0",
     "@types/react-syntax-highlighter": "^11.0.4",
     "@types/typography": "^0.16.3",

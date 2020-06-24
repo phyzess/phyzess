@@ -1859,10 +1859,10 @@
     "@nodelib/fs.scandir" "2.1.3"
     fastq "^1.6.0"
 
-"@phyzess/nophy@^1.4.5":
-  version "1.4.5"
-  resolved "https://registry.yarnpkg.com/@phyzess/nophy/-/nophy-1.4.5.tgz#9906fe8f6d9c75b5fa608ae8406f264804348bae"
-  integrity sha512-wGjfwCXr+gRWc/xNhFpb56qWqmaztCGpnClnTQ+OfbKL4tUMArHU/7Ru0x0aCW2mvOAyfeR2jkNqAqbX6chQGA==
+"@phyzess/nophy@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@phyzess/nophy/-/nophy-1.5.0.tgz#5fcc751c97519f05b1bb68cf1b3e02e2de69159a"
+  integrity sha512-JQAg5b70hZMllLfigKxzt7oU/z2B0Hd06pOtaawzoRygMx09jC7jBcNtx7ELnAGj4+2Qx6rCotv69BAVQWCpgA==
   dependencies:
     lodash "^4.17.15"
     node-fetch "^2.6.0"
@@ -2298,6 +2298,11 @@
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
+
+"@types/katex@^0.11.0":
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/@types/katex/-/katex-0.11.0.tgz#b16c54ee670925ffef0616beae9e90c557e17334"
+  integrity sha512-27BfE8zASRLYfSBNMk5/+KIjr2CBBrH0i5lhsO04fca4TGirIIMay73v3zNkzqmsaeIa/Mi5kejWDcxPLAmkvA==
 
 "@types/lodash.sample@^4.2.6":
   version "4.2.6"
@@ -4461,7 +4466,7 @@ command-exists@^1.2.4:
   resolved "https://registry.yarnpkg.com/command-exists/-/command-exists-1.2.9.tgz#c50725af3808c8ab0260fd60b01fbfa25b954f69"
   integrity sha512-LTQ/SGc+s0Xc0Fu5WaKnR0YiygZkm9eKFvyS+fRsU7/ZWFF8ykFM6Pc9aCVf1+xasOOZpO3BAVgVrKvsqKHV7w==
 
-commander@^2.11.0, commander@^2.20.0, commander@^2.20.3:
+commander@^2.11.0, commander@^2.19.0, commander@^2.20.0, commander@^2.20.3:
   version "2.20.3"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
@@ -9737,6 +9742,13 @@ jsx-ast-utils@^2.2.1, jsx-ast-utils@^2.2.3:
   dependencies:
     array-includes "^3.1.1"
     object.assign "^4.1.0"
+
+katex@^0.11.1:
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/katex/-/katex-0.11.1.tgz#df30ca40c565c9df01a466a00d53e079e84ffaa2"
+  integrity sha512-5oANDICCTX0NqYIyAiFCCwjQ7ERu3DQG2JFHLbYOf+fXaMoH8eg/zOq5WSYJsKMi/QebW+Eh3gSM+oss1H/bww==
+  dependencies:
+    commander "^2.19.0"
 
 keyv@3.0.0:
   version "3.0.0"

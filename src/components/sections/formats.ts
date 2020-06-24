@@ -30,6 +30,10 @@ export const getLineThroughCSS: TGetFormaCSS = () => css`
   text-decoration: line-through;
 `
 
+export const getInlineEquation: TGetFormaCSS = () => css`
+  padding: 0 3px;
+`
+
 export const getFormat: TFormatMap = {
   inlineCode: getInlineCodeCSS,
   bold: getBoldCSS,
@@ -37,4 +41,5 @@ export const getFormat: TFormatMap = {
   color: getColorCSS,
   italic: getItalicCSS,
   lineThrough: getLineThroughCSS,
+  inlineEquation: getInlineEquation,
 }

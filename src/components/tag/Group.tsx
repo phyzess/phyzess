@@ -17,9 +17,10 @@ const TagGroup: React.FC<ITagGroupProps> = ({ tags, style }) => {
   let tagArray: string[] = []
   if (typeof tags === 'string') {
     tagArray = useMemo(() => tags.split(','), [tags])
-  } else {
+  } else if (tags) {
     tagArray = tags
   }
+
   return (
     <StyledTagGroup style={style}>
       {tagArray.map((tag) => (

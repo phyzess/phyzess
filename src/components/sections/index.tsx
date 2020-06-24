@@ -9,9 +9,14 @@ import List from './List'
 import Divider from './Divider'
 import Code from './Code'
 import Page from './Page'
+import Toggle from './Toggle'
+import Equation from './Equation'
 
 export const NotSupport: React.FC<IArticleSectionProps> = ({ section: { type } }) => <div> 「{type}」 Not Support</div>
 
+/**
+ * 目前由于没想好方案，gatsby 的 graphql 查询出来的最多只嵌套了一层
+ */
 export const SectionMap: ISectionMap = {
   header: Header,
   sub_header: SubHeader,
@@ -25,12 +30,12 @@ export const SectionMap: ISectionMap = {
   divider: Divider,
   code: Code,
   page: Page,
+  toggle: Toggle,
+  equation: Equation,
   // 未支持的区分类型
   collection_view_page: NotSupport,
   table_of_contents: NotSupport,
-  toggle: NotSupport,
   callout: NotSupport,
-  equation: NotSupport,
   bookmark: NotSupport,
 }
 
