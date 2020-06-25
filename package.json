@@ -21,7 +21,7 @@
     "@material-ui/core": "^4.10.2",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
-    "@phyzess/nophy": "^1.5.0",
+    "@phyzess/nophy": "^1.5.1",
     "dayjs": "^1.8.28",
     "katex": "^0.11.1",
     "normalize.css": "^8.0.1",

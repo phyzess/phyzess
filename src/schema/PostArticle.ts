@@ -33,5 +33,17 @@ export const PostArticleFragment = graphql`
         url
       }
     }
+    format {
+      page_icon
+      display_source
+      code_wrap
+      block_aspect_ratio
+      block_color
+      block_full_width
+      block_height
+      block_page_width
+      block_preserve_scale
+      block_width
+    }
   }
 `

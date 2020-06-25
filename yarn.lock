@@ -1859,10 +1859,10 @@
     "@nodelib/fs.scandir" "2.1.3"
     fastq "^1.6.0"
 
-"@phyzess/nophy@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@phyzess/nophy/-/nophy-1.5.0.tgz#5fcc751c97519f05b1bb68cf1b3e02e2de69159a"
-  integrity sha512-JQAg5b70hZMllLfigKxzt7oU/z2B0Hd06pOtaawzoRygMx09jC7jBcNtx7ELnAGj4+2Qx6rCotv69BAVQWCpgA==
+"@phyzess/nophy@^1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@phyzess/nophy/-/nophy-1.5.1.tgz#05659fb051e2c8eebced7713acee183a771224bf"
+  integrity sha512-O1VsalkEWND6//Z4eFc7LHus6tjZqgqno5GCe7ZTjYxYcY7LlBjsY5+rxA2Wt7P/M58QScIOCKkjqah5yvL8hQ==
   dependencies:
     lodash "^4.17.15"
     node-fetch "^2.6.0"
