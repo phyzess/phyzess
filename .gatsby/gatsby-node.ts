@@ -146,21 +146,7 @@ export async function createPages({ graphql, actions }) {
   })
 }
 
-// export function createSchemaCustomization({ actions }) {
-//   const { createTypes } = actions
-
-//   createTypes(SchemaPostTypeDef)
-// }
-
-// export function onCreateNode({ node, actions, getNode }) {
-//   const { createNodeField } = actions
-//   if (node.internal.type === `posts`) {
-//     node.postList.forEach((post) => {
-//       createNodeField({
-//         name: `${post.name}`,
-//         node,
-//         value: `/posts/${post.name}`,
-//       })
-//     })
-//   }
-// }
+export function createSchemaCustomization({ actions }) {
+  const { createTypes } = actions
+  createTypes(SchemaPostTypeDef)
+}

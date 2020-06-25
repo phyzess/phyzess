@@ -65,7 +65,7 @@ export const query = graphql`
         rowId
         id
         article {
-          ...PostArticleFragment
+          ...ArticleFragment
         }
       }
     }

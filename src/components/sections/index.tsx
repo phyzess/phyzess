@@ -12,6 +12,7 @@ import Page from './Page'
 import Toggle from './Toggle'
 import Equation from './Equation'
 import Callout from './Callout'
+import Bookmark from './Bookmark'
 
 export const NotSupport: React.FC<IArticleSectionProps> = ({ section: { type } }) => <div> 「{type}」 Not Support</div>
 
@@ -34,10 +35,10 @@ export const SectionMap: ISectionMap = {
   toggle: Toggle,
   equation: Equation,
   callout: Callout,
+  bookmark: Bookmark,
   // 未支持的区分类型
   collection_view_page: NotSupport,
   table_of_contents: NotSupport,
-  bookmark: NotSupport,
 }
 
 export const getSectionComponent = (section: IArticleSection) => SectionMap[section.type]

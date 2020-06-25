@@ -3,8 +3,8 @@ import { graphql } from 'gatsby'
 /**
  * @todo 看能不能抽一个嵌套的 children fragment 出来
  */
-export const PostArticleFragment = graphql`
-  fragment PostArticleFragment on PostArticle {
+export const ArticleFragment = graphql`
+  fragment ArticleFragment on Article {
     id
     type
     version
@@ -44,6 +44,8 @@ export const PostArticleFragment = graphql`
       block_page_width
       block_preserve_scale
       block_width
+      bookmark_icon
+      bookmark_cover
     }
   }
 `
