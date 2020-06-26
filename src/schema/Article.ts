@@ -10,9 +10,11 @@ export const ArticleFragment = graphql`
     version
     html {
       caption
-      # checked
+      checked
       content
+      description
       language
+      link
       tagType
       children {
         id
@@ -20,7 +22,7 @@ export const ArticleFragment = graphql`
         version
         html {
           caption
-          # checked
+          checked
           content
           tagType
           format {
