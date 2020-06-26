@@ -36,9 +36,11 @@ export const SectionMap: ISectionMap = {
   equation: Equation,
   callout: Callout,
   bookmark: Bookmark,
+  // 目录不会有数据源生成，全都是从本地生成
+  table_of_contents: NotSupport,
   // 未支持的区分类型
   collection_view_page: NotSupport,
-  table_of_contents: NotSupport,
+  // tableInline 类型的 table 暂未找到好方法
 }
 
 export const getSectionComponent = (section: IArticleSection) => SectionMap[section.type]
