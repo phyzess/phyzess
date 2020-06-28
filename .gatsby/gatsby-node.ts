@@ -1,13 +1,19 @@
 import { resolve } from 'path'
+import dotenv from 'dotenv'
 import dayjs from 'dayjs'
 import downloader from 'image-downloader'
-import { token, siteConfigPageUrl, postListPageUrl } from '../nophyConfig'
 import Nophy, { parseImageUrl } from '@phyzess/nophy'
 import { SchemaPostTypeDef } from './schema'
 import { ISiteMetaData, INavItem } from './types'
 
+if (process.env.NODE_ENV === 'development') {
+  dotenv.config({
+    path: `.env.${process.env.NODE_ENV}`,
+  })
+}
+
 const notion = new Nophy({
-  token,
+  token: process.env.PHYZESS_NOTION_TOKEN,
 })
 
 const navList: INavItem[] = [
@@ -24,7 +30,7 @@ const navList: INavItem[] = [
 ]
 
 const getSiteConfigFromNotion = async (): Promise<ISiteMetaData> => {
-  const siteConfigFromNotion = await notion.fetchPage(siteConfigPageUrl)
+  const siteConfigFromNotion = await notion.fetchPage(process.env.PHYZESS_SITE_CONFIG_URL)
   const siteConfigData = siteConfigFromNotion.getRowData()
 
   let siteConfig = {} as ISiteMetaData
@@ -62,7 +68,7 @@ const getSiteConfigFromNotion = async (): Promise<ISiteMetaData> => {
 }
 
 const getPostsFromNotion = async () => {
-  const postListPage = await notion.fetchPage(postListPageUrl)
+  const postListPage = await notion.fetchPage(process.env.PHYZESS_POST_LIST_URL)
   return postListPage.loadPages((_) => _.status === 'completed')
 }
 

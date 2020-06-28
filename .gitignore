@@ -70,8 +70,6 @@ yarn-error.log
 
 .history
 
-nophyConfig.js
-
 # ignore avatar and favicon
 static/avatar.png
 static/favicon.ico
