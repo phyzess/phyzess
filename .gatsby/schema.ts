@@ -18,7 +18,7 @@ export const SchemaPostTypeDef = `
     tagType: String
     checked: Boolean
     format: [HtmlFormat]
-    children: Children
+    children: [Children]
   }
   type Children {
     id: String
