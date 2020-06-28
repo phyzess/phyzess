@@ -6,9 +6,9 @@ import Nophy, { parseImageUrl } from '@phyzess/nophy'
 import { SchemaPostTypeDef } from './schema'
 import { ISiteMetaData, INavItem } from './types'
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'development' || /deploy:local/.test(process.env.npm_config_argv)) {
   dotenv.config({
-    path: `.env.${process.env.NODE_ENV}`,
+    path: `.env.development`,
   })
 }
 

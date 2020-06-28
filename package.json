@@ -7,9 +7,10 @@
   "scripts": {
     "build": "gatsby clean && gatsby build",
     "develop": "gatsby clean && gatsby develop",
+    "deploy:local": "yarn build && yarn serve",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "yarn run develop",
-    "serve": "gatsby serve",
+    "serve": "gatsby serve -o",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "lint:fix": "eslint src --ext .js,.jsx,.ts,.tsx --fix"

@@ -38,7 +38,7 @@ const Header: React.FC<IHeaderProps> = ({ title, createTime }) => {
   const { pathname, state } = useLocation()
   const cls = useStyle()
 
-  let backTo = (state as ICustomState).prevPath
+  let backTo = (state as ICustomState)?.prevPath
   if (!/^\/posts(\?page=\d)?$/.test(backTo)) {
     backTo = '/posts'
   }
