@@ -35,12 +35,6 @@ const builder = {
     //   },
     // },
     `gatsby-plugin-react-helmet`,
-    // {
-    //   resolve: `gatsby-plugin-typography`,
-    //   options: {
-    //     pathToConfigModule: `src/utils/typography`,
-    //   },
-    // },
     `gatsby-plugin-typescript`,
     `gatsby-plugin-eslint`,
     `gatsby-plugin-stylus`,

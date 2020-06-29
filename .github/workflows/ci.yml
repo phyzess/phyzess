@@ -1,5 +1,5 @@
 # CI/CD
-name: Build & Deploy new phyzess.me
+name: CI/CD
 
 on:
   push:

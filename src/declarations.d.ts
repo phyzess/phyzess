@@ -10,12 +10,6 @@
 /**
  * gatsby 内置类型参考：https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby/index.d.ts
  */
-declare module 'typography-theme-moraga' {
-  import { TypographyOptions } from 'typography'
-  const Theme: TypographyOptions
-
-  export = Theme
-}
 
 declare namespace SiteMeta {
   export interface INavItem {
