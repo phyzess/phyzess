@@ -1,3 +1,4 @@
+# CI/CD
 name: Build & Deploy new phyzess.me
 
 on:
@@ -5,7 +6,7 @@ on:
     branches: [master]
 
 jobs:
-  deploy:
+  deploy&publish:
     runs-on: ubuntu-latest
 
     steps:
