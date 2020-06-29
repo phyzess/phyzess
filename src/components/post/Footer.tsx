@@ -19,7 +19,7 @@ const FooterRow = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0.5em 0;
+  margin: 1em 0;
   padding: 0 0.5em;
 `
 
