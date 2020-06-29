@@ -6,7 +6,7 @@ on:
     branches: [master]
 
 jobs:
-  deploy&publish:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
