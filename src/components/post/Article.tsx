@@ -11,6 +11,7 @@ interface IArticleProps {
 const useArticleSectionStyle = makeStyles({
   root: {
     margin: '4px 0',
+    padding: '0 1.5em',
     textShadow: 'none',
     overflow: 'hidden',
   },

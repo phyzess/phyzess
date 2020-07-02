@@ -3,33 +3,34 @@ import { useLocation } from '@reach/router'
 import { makeStyles } from '@material-ui/core'
 import { Pagination, PaginationItem } from '@material-ui/lab'
 import styled from '@emotion/styled'
-import { $colorTextDefault } from '@root/theme'
+import { useTheme, ITheme } from '@root/theme'
 import Link from '@components/link'
 import PostListItem from './Item'
 import { IPost } from './types'
 
-const useStyle = makeStyles({
-  paginationRoot: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-    margin: '2.5em auto 0',
-    maxWidth: '800px',
-  },
-  paginationItemRoot: {
-    color: $colorTextDefault,
-    backgroundColor: 'transparent',
-    '&:hover': {
-      backgroundColor: 'transparent',
+const useStyle = (theme: ITheme) =>
+  makeStyles({
+    paginationRoot: {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      margin: '2.5em auto 0',
+      maxWidth: '800px',
     },
-    '&$selected': {
+    paginationItemRoot: {
+      color: theme.neuTextDefault,
       backgroundColor: 'transparent',
       '&:hover': {
         backgroundColor: 'transparent',
       },
+      '&$selected': {
+        backgroundColor: 'transparent',
+        '&:hover': {
+          backgroundColor: 'transparent',
+        },
+      },
     },
-  },
-  selected: {},
-})
+    selected: {},
+  })()
 
 const PostListWrapper = styled.div`
   padding: 2em 0;
@@ -41,7 +42,8 @@ export interface IPostListProps {
 }
 
 const PostList: React.FC<IPostListProps> = ({ pageSize, posts }) => {
-  const cls = useStyle()
+  const theme = useTheme()
+  const cls = useStyle(theme)
   const { search } = useLocation()
 
   const pageCount = Math.ceil(posts.length / pageSize)

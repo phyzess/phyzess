@@ -1,28 +1,29 @@
 import React from 'react'
 import { Card, CardActionArea, CardContent, makeStyles, CardMedia } from '@material-ui/core'
 import styled from '@emotion/styled'
-import { $innerShadow, $innerShadowActive } from '@root/theme'
+import { useTheme, ITheme } from '@root/theme'
 import { IArticleSectionProps } from './types'
 
-const useStyles = makeStyles({
-  root: {
-    boxShadow: $innerShadow,
-    '&:hover': {
-      boxShadow: $innerShadowActive,
+const useStyles = (theme: ITheme) =>
+  makeStyles({
+    root: {
+      boxShadow: theme.neuInnerShadow,
+      '&:hover': {
+        boxShadow: theme.neuInnerShadowActive,
+      },
     },
-  },
-  actionRoot: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'initial',
-  },
-  content: {
-    flex: '1 0 auto',
-  },
-  cover: {
-    width: 151,
-  },
-})
+    actionRoot: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'initial',
+    },
+    content: {
+      flex: '1 0 auto',
+    },
+    cover: {
+      width: 151,
+    },
+  })()
 
 const BookmarkTitle = styled.div`
   font-size: 14px;
@@ -65,7 +66,8 @@ const BookmarkLinkSrc = styled.div`
 `
 
 const Bookmark: React.FC<IArticleSectionProps> = ({ section: { html, format } }) => {
-  const cls = useStyles()
+  const theme = useTheme()
+  const cls = useStyles(theme)
   return (
     <Card classes={{ root: cls.root }}>
       <CardActionArea classes={{ root: cls.actionRoot }} component='a' href={html[0].link}>

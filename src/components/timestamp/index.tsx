@@ -3,16 +3,17 @@ import { Typography, makeStyles } from '@material-ui/core'
 import DateRangeIcon from '@material-ui/icons/DateRange'
 import styled from '@emotion/styled'
 import dayjs from 'dayjs'
-import { $colorTextDefault } from '@/root/theme'
+import { useTheme, ITheme } from '@root/theme'
 
-const useStyle = makeStyles({
-  root: {
-    marginLeft: '0.3em',
-    height: '20px',
-    fontSize: '1em',
-    color: $colorTextDefault,
-  },
-})
+const useStyle = (theme: ITheme) =>
+  makeStyles({
+    root: {
+      marginLeft: '0.3em',
+      height: '20px',
+      fontSize: '1em',
+      color: theme.neuTextDefault,
+    },
+  })
 
 const TimestampWrapper = styled.span`
   display: inline-flex;
@@ -24,10 +25,11 @@ interface ITimestampProps {
   timestamp: number
 }
 const Timestamp: React.FC<ITimestampProps> = ({ timestamp }) => {
-  const cls = useStyle()
+  const theme = useTheme()
+  const cls = useStyle(theme)()
   return (
     <TimestampWrapper>
-      <DateRangeIcon fontSize='small' style={{ color: $colorTextDefault }} />
+      <DateRangeIcon fontSize='small' style={{ color: theme.neuTextDefault }} />
       <Typography variant='h6' component='span' classes={{ root: cls.root }}>
         {dayjs(timestamp).format('MMM DD, YYYY')}
       </Typography>

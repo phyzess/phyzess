@@ -1,23 +1,44 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import styled from '@emotion/styled'
+import { ITheme, IThemedProps } from '@root/theme'
 import { IArticleSectionProps } from './types'
 
-const commonCss = css`
+const commonCss = (theme: ITheme) => css`
   margin-top: 1em;
   margin-bottom: 1px;
+  font-weight: 400;
+
+  &:before {
+    padding-right: 0.3em;
+    margin-left: -0.5em;
+    color: ${theme.primary};
+    opacity: 0.8;
+  }
 `
 
-const StyledHeader = styled.h1`
-  ${commonCss}
+const StyledHeader = styled.h2<IThemedProps>`
+  ${({ theme }) => commonCss(theme)}
+
+  &:before {
+    content: '//';
+  }
 `
 
-const StyledSubHeader = styled.h2`
-  ${commonCss}
+const StyledSubHeader = styled.h3<IThemedProps>`
+  ${({ theme }) => commonCss(theme)}
+
+  &:before {
+    content: '///';
+  }
 `
 
-const StyledSubSubHeader = styled.h3`
-  ${commonCss}
+const StyledSubSubHeader = styled.h4<IThemedProps>`
+  ${({ theme }) => commonCss(theme)}
+
+  &:before {
+    content: '/\///';
+  }
 `
 
 export const Header: React.FC<IArticleSectionProps> = React.memo(({ section: { html } }) => (

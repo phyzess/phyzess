@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 import { Location } from '@reach/router'
+import { useTheme } from '@root/theme'
 import { getCSS } from './styled'
 import { ILinkProps } from './types'
 
@@ -13,7 +14,8 @@ const Link: React.FC<ILinkProps> = ({
   active,
   ...props
 }) => {
-  const css = getCSS(colorType, !!neumorphism, !!active)
+  const theme = useTheme()
+  const css = getCSS(colorType, !!neumorphism, !!active, theme)
 
   if (as === 'a') {
     return (

@@ -2,7 +2,7 @@ import React from 'react'
 import { useLocation } from '@reach/router'
 import { Typography, Breadcrumbs, makeStyles } from '@material-ui/core'
 import styled from '@emotion/styled'
-import { $colorTextSecondary } from '@root/theme'
+import { useTheme, ITheme } from '@root/theme'
 import Link from '@components/link'
 import Timestamp from '@components/timestamp'
 
@@ -16,13 +16,14 @@ interface ICustomState {
   [key: string]: any
 }
 
-const useStyle = makeStyles({
-  breadcrumbsSeparator: {
-    marginLeft: 0,
-    marginRight: 0,
-    color: $colorTextSecondary,
-  },
-})
+const useStyle = (theme: ITheme) =>
+  makeStyles({
+    breadcrumbsSeparator: {
+      marginLeft: 0,
+      marginRight: 0,
+      color: theme.neuTextSecondary,
+    },
+  })()
 
 const Title = styled.div`
   display: flex;
@@ -36,7 +37,8 @@ const StyledInfos = styled.header`
 
 const Header: React.FC<IHeaderProps> = ({ title, createTime }) => {
   const { pathname, state } = useLocation()
-  const cls = useStyle()
+  const theme = useTheme()
+  const cls = useStyle(theme)
 
   let backTo = (state as ICustomState)?.prevPath
   if (!/^\/posts(\?page=\d)?$/.test(backTo)) {

@@ -1,23 +1,25 @@
 import React from 'react'
 import { Avatar as MuiAvatar, makeStyles } from '@material-ui/core'
-import { $colorWhite, $innerShadowActive, $transitionDuration, $transitionTimingFunction } from '@/root/theme'
+import { ITheme, useTheme } from '@root/theme'
 import logo from '@/../static/avatar.png'
 
-const useStyles = makeStyles({
-  root: {
-    padding: 3,
-    transition: `all ${$transitionDuration} ${$transitionTimingFunction}`,
+const useStyles = (theme: ITheme) =>
+  makeStyles({
+    root: {
+      padding: 3,
+      transition: `all ${theme.transitionDuration} ${theme.transitionTimingFunction}`,
 
-    '&:hover': {
-      opacity: 0.8,
-      backgroundColor: $colorWhite,
-      boxShadow: $innerShadowActive,
+      '&:hover': {
+        opacity: 0.8,
+        backgroundColor: theme.white,
+        boxShadow: theme.neuInnerShadowActive,
+      },
     },
-  },
-})
+  })()
 
 const Avatar = () => {
-  const cls = useStyles()
+  const theme = useTheme()
+  const cls = useStyles(theme)
   return <MuiAvatar classes={{ root: cls.root }} alt='phyzess.me' src={logo} />
 }
 

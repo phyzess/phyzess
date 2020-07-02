@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { parseImageUrl } from '@phyzess/nophy'
-import { $colorPrimary } from '@root/theme'
+import { IThemedProps } from '@root/theme'
 import { getPredefinedColor, getPredefinedFontColor, TPredefinedColor } from '@root/predefinedColor'
 import { IArticleSectionProps } from './types'
 
@@ -10,13 +10,14 @@ interface ICalloutStyle {
   bgColor?: TPredefinedColor
 }
 
-const CalloutWrapper = styled.div<ICalloutStyle>`
+const CalloutWrapper = styled.div<ICalloutStyle & IThemedProps>`
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: flex-start;
   padding: 16px 16px 16px 12px;
-  color: ${({ color }) => (color ? getPredefinedFontColor(color, color === 'gray' ? 0.6 : 1) : $colorPrimary)};
+  color: ${({ color, theme }) =>
+    color ? getPredefinedFontColor(color, color === 'gray' ? 0.6 : 1) : theme.neuPrimary};
   border-radius: 3px;
   border-width: 1px;
   border-style: solid;
@@ -57,9 +58,6 @@ const Callout: React.FC<IArticleSectionProps> = ({ section: { html, format } }) 
       color = blockColor as TPredefinedColor
     }
   }
-  console.log('===Log Start===')
-  console.log(color)
-  console.log('---Log End---')
   const icon = format?.page_icon || ''
   return (
     <CalloutWrapper color={color} bgColor={bgColor}>

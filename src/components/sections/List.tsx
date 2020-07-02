@@ -3,9 +3,9 @@ import { Checkbox, makeStyles } from '@material-ui/core'
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord'
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
-import { $colorTextSecondary } from '@root/theme'
 import { getSectionComponent } from './index'
 import Text from './Text'
+import { ITheme } from '@root/theme'
 import { IArticleSectionProps } from './types'
 
 const useStyles = makeStyles({
@@ -43,9 +43,9 @@ const ListContent = styled.div`
   min-height: 1.5em;
 `
 
-const checkedCSS = css`
+const checkedCSS = (theme: ITheme) => css`
   text-decoration: line-through;
-  color: ${$colorTextSecondary};
+  color: ${theme.neuTextSecondary};
 `
 
 const List: React.FC<IArticleSectionProps> = (props) => {
@@ -67,7 +67,7 @@ const List: React.FC<IArticleSectionProps> = (props) => {
         )}
       </ListStyle>
       <ListContent>
-        <Text {...props} css={html[0].checked && checkedCSS} />
+        <Text {...props} css={(theme: ITheme) => html[0].checked && checkedCSS(theme)} />
         {children &&
           children.length !== 0 &&
           children.map((child, index) => {

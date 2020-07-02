@@ -1,8 +1,9 @@
 import React from 'react'
 import { PageProps } from 'gatsby'
 import { ThemeProvider, CssBaseline, StylesProvider, createGenerateClassName } from '@material-ui/core'
+import { ThemeContext } from '@emotion/core'
 import { getDisplayName } from '@utils/getDisplayName'
-import { theme } from './theme'
+import { PrefersColorSchemeDetector } from './theme'
 
 const generateClassName = createGenerateClassName({
   productionPrefix: 'phyzess',
@@ -15,10 +16,16 @@ const withRoot = <P extends PageProps>(Component: React.ComponentType<P>): React
     public render() {
       return (
         <StylesProvider generateClassName={generateClassName}>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <Component {...this.props} />
-          </ThemeProvider>
+          <PrefersColorSchemeDetector>
+            {(theme, aliveThemeConfig) => (
+              <ThemeContext.Provider value={aliveThemeConfig}>
+                <ThemeProvider theme={theme}>
+                  <CssBaseline />
+                  <Component {...this.props} />
+                </ThemeProvider>
+              </ThemeContext.Provider>
+            )}
+          </PrefersColorSchemeDetector>
         </StylesProvider>
       )
     }

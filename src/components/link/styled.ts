@@ -1,16 +1,8 @@
 import { css } from '@emotion/core'
-import {
-  $colorTextDefault,
-  $colorTextPrimary,
-  $colorTextSecondary,
-  $colorTextActive,
-  $innerShadowActive,
-  $transitionDuration,
-  $transitionTimingFunction,
-} from '@/root/theme'
+import { ITheme } from '@root/theme'
 import { Color, TGetCSS } from './types'
 
-const baseCSS = css`
+const baseCSS = (theme: ITheme) => css`
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -19,67 +11,68 @@ const baseCSS = css`
   padding-bottom: 0;
   padding-left: 7px;
   text-decoration: none;
-  transition: all ${$transitionDuration} ${$transitionTimingFunction};
+  transition: all ${theme.transitionDuration} ${theme.transitionTimingFunction};
 
   & > * {
     flex: 1;
   }
 `
 
-export const activeText = css`
-  color: ${$colorTextActive};
+export const activeText = (theme: ITheme) => css`
+  color: ${theme.neuTextActive};
 `
 
-export const activeNeumorphism = css`
-  color: ${$colorTextPrimary};
-  box-shadow: ${$innerShadowActive};
+export const activeNeumorphism = (theme: ITheme) => css`
+  color: ${theme.neuTextPrimary};
+  box-shadow: ${theme.neuInnerShadowActive};
 `
 
-const textStyle = css`
+const textStyle = (theme: ITheme) => css`
   &:hover {
-    ${activeText};
+    ${activeText(theme)};
   }
 `
 
-const neumorphismStyle = css`
+const neumorphismStyle = (theme: ITheme) => css`
   padding-top: 2px;
   padding-bottom: 2px;
   border-radius: 5px;
   font-weight: 600;
   &:hover {
-    ${activeNeumorphism}
+    ${activeNeumorphism(theme)}
   }
 `
 
-const getColor = (colorType: Color, neumorphism: boolean) => {
+const getColor = (colorType: Color, neumorphism: boolean, theme: ITheme) => {
   switch (colorType) {
     case 'primary':
       return css`
-        color: ${$colorTextDefault};
+        color: ${theme.neuTextDefault};
       `
     case 'secondary':
       return css`
-        color: ${$colorTextSecondary};
+        color: ${theme.neuTextSecondary};
       `
     default:
       return neumorphism
         ? css`
-            color: ${$colorTextDefault};
+            color: ${theme.neuTextDefault};
           `
         : css`
-            color: ${$colorTextPrimary};
+            color: ${theme.neuTextPrimary};
           `
   }
 }
 
-const getStyleWithType = (neumorphism: boolean) => (neumorphism ? neumorphismStyle : textStyle)
+const getStyleWithType = (neumorphism: boolean, theme: ITheme) =>
+  neumorphism ? neumorphismStyle(theme) : textStyle(theme)
 
-const getActiveStyle = (neumorphism: boolean, active: boolean) =>
-  active ? (neumorphism ? activeNeumorphism : activeText) : css``
+const getActiveStyle = (neumorphism: boolean, active: boolean, theme: ITheme) =>
+  active ? (neumorphism ? activeNeumorphism(theme) : activeText(theme)) : css``
 
-export const getCSS: TGetCSS = (colorType, neumorphism, active) => [
-  baseCSS,
-  getColor(colorType, neumorphism),
-  getStyleWithType(neumorphism),
-  getActiveStyle(neumorphism, active),
+export const getCSS: TGetCSS = (colorType, neumorphism, active, theme) => [
+  baseCSS(theme),
+  getColor(colorType, neumorphism, theme),
+  getStyleWithType(neumorphism, theme),
+  getActiveStyle(neumorphism, active, theme),
 ]
