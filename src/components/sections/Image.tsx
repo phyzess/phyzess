@@ -2,16 +2,14 @@ import React from 'react'
 import { css } from '@emotion/core'
 import styled from '@emotion/styled'
 import { Typography } from '@material-ui/core'
-// import Skeleton from '@material-ui/lab/Skeleton'
 import { parseImageUrl } from '@phyzess/nophy'
 import { IArticleSectionProps } from './types'
 
 const ImageWrapper = styled.div`
-  width: 100%;
+  margin: 0.5em auto;
+  width: 90%;
   max-width: 960px;
   align-self: center;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
 `
 
 const imageCSS = css`
@@ -19,7 +17,7 @@ const imageCSS = css`
   width: 100%;
   object-fit: cover;
   border: 0;
-  border-radius: 1px;
+  border-radius: 0.5em;
   pointer-events: auto;
 `
 

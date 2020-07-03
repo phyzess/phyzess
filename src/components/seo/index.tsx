@@ -9,12 +9,7 @@ interface ISeoProps {
   meta?: any[]
 }
 
-const Seo: React.FC<ISeoProps> = ({
-  description = '',
-  lang = 'zh-CN',
-  meta = [],
-  title,
-}) => {
+const Seo: React.FC<ISeoProps> = ({ description = '', lang = 'zh-CN', meta = [], title }) => {
   const { siteMeta } = useStaticQuery(
     graphql`
       query {
@@ -51,22 +46,6 @@ const Seo: React.FC<ISeoProps> = ({
         {
           property: `og:type`,
           content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        // {
-        //   name: `twitter:creator`,
-        //   content: siteMeta.social.twitter,
-        // },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
         },
       ].concat(meta)}
     />

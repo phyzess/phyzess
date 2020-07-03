@@ -4,6 +4,7 @@ import { Container, makeStyles } from '@material-ui/core'
 import { IPage } from '@phyzess/nophy'
 import withRoot from '@/root'
 import Layout from '@components/layouts'
+import Seo from '@components/seo'
 import Header from './Header'
 import Article from './Article'
 import Footer, { IFooterProps } from './Footer'
@@ -44,6 +45,7 @@ const Post: React.FC<IPostProps> = ({
 
   return (
     <Layout>
+      <Seo title={name} />
       <Container classes={{ root: cls.containerRoot }} maxWidth='lg'>
         <Header title={name} createTime={created_time} />
         <Article article={article} />

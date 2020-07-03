@@ -8,7 +8,6 @@ const Playground: React.FC<PageProps> = () => {
   return (
     <Layout>
       <Seo title='playground' />
-      playground
     </Layout>
   )
 }

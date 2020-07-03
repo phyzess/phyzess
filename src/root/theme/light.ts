@@ -4,12 +4,11 @@ import { INeuColor, INeuBoxShadow, INeumorphismTheme } from './interface'
 export const neuLightColor: INeuColor = {
   neuBackground: '#f0f0f3',
   neuShadow: '#AEAEC0',
-  // neuShadow: '#BABECC',
   neuPrimary: '#474747',
   neuTextDefault: '#666',
   neuTextSecondary: '#BABECC',
   neuTextPrimary: basicColor.primary,
-  neuTextActive: '#d21a06',
+  neuTextActive: '#ff2811',
   neuTextShadow: basicColor.white,
 }
 

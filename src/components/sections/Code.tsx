@@ -1,14 +1,30 @@
 import React from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import styled from '@emotion/styled'
+import { css } from '@emotion/core'
+import { IThemedProps } from '@root/theme'
 import { IArticleSectionProps } from './types'
+
+const syntaxHighlighterCss = css`
+  border-radius: 0.5em !important;
+`
+
+const CodeWrapper = styled.div<IThemedProps>`
+  margin: 1em auto;
+  width: 90%;
+  box-shadow: ${({ theme }) => theme.neuOutShadow};
+  border-radius: 0.5em;
+`
 
 const Code: React.FC<IArticleSectionProps> = ({ section: { html } }) => {
   const { content, language } = html[0]
   return (
-    <SyntaxHighlighter showLineNumbers language={language?.toLowerCase()} style={atomDark}>
-      {content}
-    </SyntaxHighlighter>
+    <CodeWrapper>
+      <SyntaxHighlighter showLineNumbers language={language?.toLowerCase()} style={atomDark} css={syntaxHighlighterCss}>
+        {content}
+      </SyntaxHighlighter>
+    </CodeWrapper>
   )
 }
 

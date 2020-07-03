@@ -57,6 +57,8 @@ const PostList: React.FC<IPostListProps> = ({ pageSize, posts }) => {
         <PostListItem key={_.rowId} postMeta={_} last={index === visiblePosts.length - 1} />
       ))}
       <Pagination
+        hidePrevButton
+        hideNextButton
         count={pageCount}
         classes={{ root: cls.paginationRoot }}
         renderItem={(item) => (

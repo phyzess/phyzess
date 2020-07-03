@@ -8,7 +8,7 @@ export const neuDarkColor: INeuColor = {
   neuTextDefault: '#929090',
   neuTextSecondary: '#BABECC',
   neuTextPrimary: basicColor.primary,
-  neuTextActive: '#d21a06',
+  neuTextActive: '#ff2811',
   neuTextShadow: basicColor.black,
 }
 
