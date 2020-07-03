@@ -12,7 +12,7 @@ const useStyles = (theme: ITheme) =>
       '&:hover': {
         opacity: 0.8,
         backgroundColor: theme.white,
-        boxShadow: theme.neuInnerShadowActive,
+        boxShadow: theme.neuInnerShadow,
       },
     },
   })()

@@ -24,7 +24,7 @@ export const activeText = (theme: ITheme) => css`
 
 export const activeNeumorphism = (theme: ITheme) => css`
   color: ${theme.neuTextPrimary};
-  box-shadow: ${theme.neuInnerShadowActive};
+  box-shadow: ${theme.neuInnerShadow};
 `
 
 const textStyle = (theme: ITheme) => css`

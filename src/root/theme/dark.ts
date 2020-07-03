@@ -13,10 +13,10 @@ export const neuDarkColor: INeuColor = {
 }
 
 export const neuDarkBoxShadow: INeuBoxShadow = {
-  neuOutShadow: `-5px -5px 20px ${neuDarkColor.neuShadow},  5px 5px 20px ${basicColor.black}`,
-  neuOutShadowActive: `-2px -2px 5px ${neuDarkColor.neuShadow}, 2px 2px 5px ${basicColor.black}`,
-  neuInnerShadow: `inset 2px 2px 5px ${basicColor.black}, inset -5px -5px 10px ${neuDarkColor.neuShadow}`,
-  neuInnerShadowActive: `inset 1px 1px 2px ${basicColor.black}, inset -1px -1px 2px ${neuDarkColor.neuShadow}`,
+  neuOutShadow: `-2px -2px 5px ${neuDarkColor.neuShadow}, 2px 2px 5px ${basicColor.black}`,
+  neuOutShadowActive: `-5px -5px 20px ${neuDarkColor.neuShadow},  5px 5px 20px ${basicColor.black}`,
+  neuInnerShadow: `inset 1px 1px 2px ${basicColor.black}, inset -1px -1px 2px ${neuDarkColor.neuShadow}`,
+  neuInnerShadowActive: `inset 2px 2px 5px ${basicColor.black}, inset -5px -5px 10px ${neuDarkColor.neuShadow}`,
 }
 
 export const neuThemeDark: INeumorphismTheme = {

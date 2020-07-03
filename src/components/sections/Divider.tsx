@@ -4,7 +4,7 @@ import { css } from '@emotion/core'
 import { IArticleSectionProps } from './types'
 
 const customCSS = css`
-  margin: 0.6em auto;
+  margin: 1.5em auto;
   width: 80%;
 `
 

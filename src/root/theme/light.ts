@@ -14,10 +14,10 @@ export const neuLightColor: INeuColor = {
 }
 
 export const neuLightBoxShadow: INeuBoxShadow = {
-  neuOutShadow: `-5px -5px 20px ${basicColor.white},  5px 5px 20px ${neuLightColor.neuShadow}`,
-  neuOutShadowActive: `-2px -2px 5px ${basicColor.white}, 2px 2px 5px ${neuLightColor.neuShadow}`,
-  neuInnerShadow: `inset 2px 2px 5px ${neuLightColor.neuShadow}, inset -5px -5px 10px ${basicColor.white}`,
-  neuInnerShadowActive: `inset 1px 1px 2px ${neuLightColor.neuShadow}, inset -1px -1px 2px ${basicColor.white}`,
+  neuOutShadow: `-2px -2px 5px ${basicColor.white}, 2px 2px 5px ${neuLightColor.neuShadow}`,
+  neuOutShadowActive: `-5px -5px 20px ${basicColor.white},  5px 5px 20px ${neuLightColor.neuShadow}`,
+  neuInnerShadow: `inset 1px 1px 2px ${neuLightColor.neuShadow}, inset -1px -1px 2px ${basicColor.white}`,
+  neuInnerShadowActive: `inset 2px 2px 5px ${neuLightColor.neuShadow}, inset -5px -5px 10px ${basicColor.white}`,
 }
 
 export const neuThemeLight: INeumorphismTheme = {
