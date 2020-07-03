@@ -15,7 +15,7 @@ const withRoot = <P extends PageProps>(Component: React.ComponentType<P>): React
 
     public render() {
       return (
-        <StylesProvider generateClassName={generateClassName}>
+        <StylesProvider injectFirst generateClassName={generateClassName}>
           <PrefersColorSchemeDetector>
             {(theme, aliveThemeConfig) => (
               <ThemeContext.Provider value={aliveThemeConfig}>
