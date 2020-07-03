@@ -1,6 +1,7 @@
 import React, { memo } from 'react'
 import { Typography, makeStyles } from '@material-ui/core'
 import { IPage } from '@phyzess/nophy'
+import styled from '@emotion/styled'
 import { SectionMap, IArticleSectionProps } from '@components/sections'
 
 type Article = IPage['article']
@@ -17,6 +18,10 @@ const useArticleSectionStyle = makeStyles({
   },
 })
 
+const ArticleWrapper = styled.article`
+  padding: 1.5em 0;
+`
+
 const ArticleSection: React.FC<IArticleSectionProps> = ({ section, previous, next, sameWithPrevCount }) => {
   const cls = useArticleSectionStyle()
   const SectionComponent = SectionMap[section.type]
@@ -32,7 +37,7 @@ const ArticleSection: React.FC<IArticleSectionProps> = ({ section, previous, nex
 const Article: React.FC<IArticleProps> = memo(({ article }) => {
   let sameWithPrevCount = 0
   return (
-    <article>
+    <ArticleWrapper>
       {article.map((section, index) => {
         const previous = article[index - 1]
         const next = article[index + 1]
@@ -51,7 +56,7 @@ const Article: React.FC<IArticleProps> = memo(({ article }) => {
           />
         )
       })}
-    </article>
+    </ArticleWrapper>
   )
 })
 

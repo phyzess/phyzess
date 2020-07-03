@@ -5,7 +5,7 @@ import { Grid, makeStyles } from '@material-ui/core'
 import bemFactor from '@utils/bemFactor'
 import Link from '@components/link'
 import Avatar from '@components/avatar'
-import { HeaderWrapper } from './index.styled'
+import { HeaderWrapper } from './styled'
 
 const cls = bemFactor('layout')
 

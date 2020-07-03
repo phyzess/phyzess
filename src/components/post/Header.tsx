@@ -1,6 +1,6 @@
 import React from 'react'
 import { useLocation } from '@reach/router'
-import { Typography, Breadcrumbs, makeStyles } from '@material-ui/core'
+import { Typography, Breadcrumbs, Box, makeStyles } from '@material-ui/core'
 import styled from '@emotion/styled'
 import { useTheme, ITheme } from '@root/theme'
 import Link from '@components/link'
@@ -9,6 +9,7 @@ import Timestamp from '@components/timestamp'
 interface IHeaderProps {
   title: string
   createTime: number
+  lastUpdateTime: number
 }
 
 interface ICustomState {
@@ -25,17 +26,19 @@ const useStyle = (theme: ITheme) =>
     },
   })()
 
-const Title = styled.div`
+const Flex = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
 `
 
-const StyledInfos = styled.header`
+const Title = styled(Flex)``
+
+const StyledInfos = styled(Flex)`
   margin: 0.4em 0;
 `
 
-const Header: React.FC<IHeaderProps> = ({ title, createTime }) => {
+const Header: React.FC<IHeaderProps> = ({ title, createTime, lastUpdateTime }) => {
   const { pathname, state } = useLocation()
   const theme = useTheme()
   const cls = useStyle(theme)
@@ -60,6 +63,9 @@ const Header: React.FC<IHeaderProps> = ({ title, createTime }) => {
       </Title>
       <StyledInfos>
         <Timestamp timestamp={createTime} />
+        <Box component='span' ml={2}>
+          <Timestamp timestamp={lastUpdateTime} prefix='Update at ' noIcon />
+        </Box>
       </StyledInfos>
     </header>
   )

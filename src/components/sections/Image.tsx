@@ -22,6 +22,7 @@ const imageCSS = css`
 `
 
 const cationCSS = css`
+  padding: 0.5em 1em;
   font-size: 12px;
 `
 

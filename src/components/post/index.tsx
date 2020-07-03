@@ -47,9 +47,9 @@ const Post: React.FC<IPostProps> = ({
     <Layout>
       <Seo title={name} />
       <Container classes={{ root: cls.containerRoot }} maxWidth='lg'>
-        <Header title={name} createTime={created_time} />
+        <Header title={name} createTime={created_time} lastUpdateTime={last_edited_time} />
         <Article article={article} />
-        <Footer next={next} previous={previous} lastEditedTime={last_edited_time} tags={tags} />
+        <Footer next={next} previous={previous} tags={tags} />
       </Container>
     </Layout>
   )

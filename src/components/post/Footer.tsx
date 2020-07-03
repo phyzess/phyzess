@@ -11,7 +11,6 @@ import { TagGroup } from '@components/tag'
 export interface IFooterProps {
   previous: Partial<IPage>
   next: null | Partial<IPage>
-  lastEditedTime: number
   tags: string
 }
 
@@ -29,14 +28,9 @@ const StyledName = styled.span`
   white-space: nowrap;
 `
 
-const Footer: React.FC<IFooterProps> = ({ previous, next, lastEditedTime, tags }) => {
+const Footer: React.FC<IFooterProps> = ({ previous, next, tags }) => {
   return (
     <footer>
-      <FooterRow>
-        <Typography component='h6' style={{ padding: '0 1em' }}>
-          Updated {dayjs(lastEditedTime).format('MMM DD, YYYY')}
-        </Typography>
-      </FooterRow>
       <FooterRow>
         <TagGroup tags={tags} />
       </FooterRow>

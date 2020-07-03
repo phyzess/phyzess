@@ -2,7 +2,7 @@ import React from 'react'
 import { Container } from '@material-ui/core'
 import bemFactor from '@utils/bemFactor'
 
-import { LayoutWrapper, Main } from './index.styled'
+import { LayoutWrapper, Main } from './styled'
 import Header from './Header'
 import Footer from './Footer'
 
