@@ -1,0 +1,13 @@
+name: manual build
+on:
+  repository_dispatch:
+    types: manual_build
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Hello World
+      run: |
+        echo My name is phyzess.
+        echo Hello World!
