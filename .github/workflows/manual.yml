@@ -1,0 +1,31 @@
+name: manual build
+on:
+  repository_dispatch:
+    types: manual_build
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build phyzess.me
+        run: yarn build
+        env:
+          PHYZESS_NOTION_TOKEN: ${{ secrets.PHYZESS_NOTION_TOKEN }}
+          PHYZESS_SITE_CONFIG_URL: ${{ secrets.PHYZESS_SITE_CONFIG_URL }}
+          PHYZESS_POST_LIST_URL: ${{ secrets.PHYZESS_POST_LIST_URL }}
+
+      - name: Deploy to netlify
+        uses: netlify/actions/cli@master
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        with:
+          args: deploy --dir=public --prod
+          secrets: '["NETLIFY_AUTH_TOKEN", "NETLIFY_SITE_ID"]'
+
