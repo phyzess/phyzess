@@ -33,7 +33,7 @@ const builder = {
         background_color: `#f0f0f3`,
         theme_color: `#f8807d`,
         display: `standalone`,
-        icon: `static/avatar.png`,
+        icon: `static/manifest-icon.png`,
       },
     },
     {
