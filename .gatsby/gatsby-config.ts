@@ -1,6 +1,17 @@
 const builder = {
   plugins: [
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: `G-G8K0DDDLYW`,
+        head: false,
+        anonymize: true,
+        respectDNT: true,
+        pageTransitionDelay: 0,
+        defer: false,
+      },
+    },
+    {
       resolve: `gatsby-alias-imports`,
       options: {
         aliases: {
@@ -13,31 +24,39 @@ const builder = {
         },
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `phyzess.me`,
+        short_name: `phyzess.me`,
+        start_url: `/`,
+        background_color: `#f0f0f3`,
+        theme_color: `#f8807d`,
+        display: `standalone`,
+        icon: `static/avatar.png`,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-offline',
+      options: {
+        workboxConfig: {
+          globPatterns: ['**/*'],
+        },
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: {
-    //     trackingId: `ADD YOUR TRACKING ID HERE`,
-    //   },
-    // },
     // `gatsby-plugin-feed`,
-    // {
-    //   resolve: `gatsby-plugin-manifest`,
-    //   options: {
-    //     name: `phyzess.me`,
-    //     short_name: `phyzess`,
-    //     start_url: `/`,
-    //     background_color: `#ffffff`,
-    //     theme_color: `#663399`,
-    //     display: `minimal-ui`,
-    //     icon: `static/avatar.png`,
-    //   },
-    // },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-typescript`,
     `gatsby-plugin-eslint`,
     `gatsby-plugin-stylus`,
+    {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        pathToStylesProvider: `.gatsby/mui-styles-provider-props`,
+      },
+    },
   ],
 }
 

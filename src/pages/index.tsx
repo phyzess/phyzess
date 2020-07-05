@@ -1,6 +1,5 @@
 import React from 'react'
 import { PageProps } from 'gatsby'
-import withRoot from '@/root'
 import Layout from '@components/layouts'
 import Landing from '@components/bios/Landing'
 import Seo from '@components/seo'
@@ -14,4 +13,4 @@ const PhyzessIndex: React.FC<PageProps> = () => {
   )
 }
 
-export default withRoot(PhyzessIndex)
+export default PhyzessIndex

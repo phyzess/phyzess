@@ -5,6 +5,8 @@ import { ThemeContext } from '@emotion/core'
 import { getDisplayName } from '@utils/getDisplayName'
 import { PrefersColorSchemeDetector } from './theme'
 
+export { default as RootComponent } from './Root'
+
 const generateClassName = createGenerateClassName({
   productionPrefix: 'phyzess',
 })

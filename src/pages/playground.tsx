@@ -1,6 +1,5 @@
 import React from 'react'
 import { PageProps } from 'gatsby'
-import withRoot from '@/root'
 import Layout from '@components/layouts'
 import Seo from '@components/seo'
 
@@ -12,4 +11,4 @@ const Playground: React.FC<PageProps> = () => {
   )
 }
 
-export default withRoot(Playground)
+export default Playground

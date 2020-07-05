@@ -2,7 +2,6 @@ import React from 'react'
 import { PageProps, graphql } from 'gatsby'
 import { Container, makeStyles } from '@material-ui/core'
 import { IPage } from '@phyzess/nophy'
-import withRoot from '@/root'
 import Layout from '@components/layouts'
 import Seo from '@components/seo'
 import Header from './Header'
@@ -74,4 +73,4 @@ export const query = graphql`
   }
 `
 
-export default withRoot(Post)
+export default Post
