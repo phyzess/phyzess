@@ -11,7 +11,7 @@ import '../src/stylus/reset.styl'
 
 // 站点更新检测
 export const onServiceWorkerUpdateFound = () => {
-  window.localStorage.setItem('phyzess_updated', '1')
+  // window.localStorage.setItem('phyzess_updated', '1')
   // const answer = window.confirm(
   //   `Lange nicht gesehen. 站点已经更新了~` +
   //   `重新加载，展示新页面？`
