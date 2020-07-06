@@ -1,16 +1,16 @@
 const builder = {
   plugins: [
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: {
-    //     trackingId: `G-G8K0DDDLYW`,
-    //     head: false,
-    //     anonymize: true,
-    //     respectDNT: true,
-    //     pageTransitionDelay: 0,
-    //     defer: false,
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: `G-G8K0DDDLYW`,
+        head: false,
+        anonymize: true,
+        respectDNT: true,
+        pageTransitionDelay: 0,
+        defer: false,
+      },
+    },
     {
       resolve: `gatsby-alias-imports`,
       options: {
