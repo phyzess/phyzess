@@ -21,6 +21,7 @@ export const LayoutWrapper = styled.div`
 
 export const Main = styled('main')`
   flex: 1;
+  position: relative;
   padding: 0.5rem 0;
   width: 100%;
   min-height: 40rem;

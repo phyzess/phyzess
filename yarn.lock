@@ -7214,6 +7214,14 @@ gatsby-plugin-material-ui@^2.1.9:
     clean-css "^4.2.1"
     postcss "^7.0.17"
 
+gatsby-plugin-nprogress@^2.3.9:
+  version "2.3.9"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-nprogress/-/gatsby-plugin-nprogress-2.3.9.tgz#c1d2e166059e5222009f5e4b132d079b6ca5da21"
+  integrity sha512-8yKs4xJTpoegSyCXdoVNgVT15xssSXFgESZnim+WxCZT7eoIcBMt4i+CZka4nK9F+nlc2jrt8DZJvaYs5exVCg==
+  dependencies:
+    "@babel/runtime" "^7.10.3"
+    nprogress "^0.2.0"
+
 gatsby-plugin-offline@^3.2.16:
   version "3.2.16"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-offline/-/gatsby-plugin-offline-3.2.16.tgz#f1002748ef95501879cf1ee2a24705d32419ca79"
@@ -10736,6 +10744,11 @@ npmlog@^4.0.1, npmlog@^4.1.2:
     console-control-strings "~1.1.0"
     gauge "~2.7.3"
     set-blocking "~2.0.0"
+
+nprogress@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/nprogress/-/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
+  integrity sha1-y480xTIT2JVyP8urkH6UIq28r7E=
 
 nth-check@^1.0.2, nth-check@~1.0.1:
   version "1.0.2"

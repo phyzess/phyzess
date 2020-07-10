@@ -45,7 +45,7 @@ const Post: React.FC<IPostProps> = ({
   return (
     <Layout>
       <Seo title={name} />
-      <Container classes={{ root: cls.containerRoot }} maxWidth='lg'>
+      <Container classes={{ root: cls.containerRoot }} maxWidth='lg' className='phyzess__article-container'>
         <Header title={name} createTime={created_time} lastUpdateTime={last_edited_time} />
         <Article article={article} />
         <Footer next={next} previous={previous} tags={tags} />

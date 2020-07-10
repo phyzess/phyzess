@@ -35,6 +35,7 @@ module.exports = {
         ['@utils', `src/utils`],
         ['@templates', `src/templates`],
         ['@root', 'src/root'],
+        ['@hooks', 'src/hooks'],
       ],
     },
   },

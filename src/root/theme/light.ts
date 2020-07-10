@@ -3,6 +3,7 @@ import { INeuColor, INeuBoxShadow, INeumorphismTheme } from './interface'
 
 export const neuLightColor: INeuColor = {
   neuBackground: '#f0f0f3',
+  neuInverseBg: 'rgba(0, 0, 0, 0.15)',
   neuShadow: '#AEAEC0',
   neuPrimary: '#474747',
   neuTextDefault: '#666',

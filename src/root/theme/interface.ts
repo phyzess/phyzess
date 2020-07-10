@@ -22,6 +22,7 @@ export interface IBasicTheme extends IBasicColor {
  */
 export interface INeuColor {
   neuBackground: string // 背景色
+  neuInverseBg: string // Neumorphism 与主题色调相反的颜色
   neuPrimary: string // Neumorphism 主色调，主要用于文字
   neuShadow: string // Neumorphism 次要色调，主要用于文字（浅色）及阴影
   neuTextDefault: string // Neumorphism 文字默认颜色

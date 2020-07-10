@@ -24,6 +24,7 @@
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@phyzess/nophy": "^1.5.2",
     "dayjs": "^1.8.29",
+    "gatsby-plugin-nprogress": "^2.3.9",
     "katex": "^0.11.1",
     "normalize.css": "^8.0.1",
     "prismjs": "^1.20.0",

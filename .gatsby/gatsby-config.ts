@@ -21,6 +21,7 @@ const builder = {
           '@utils': `src/utils`,
           '@templates': `src/templates`,
           '@root': `src/root`,
+          '@hooks': `src/hooks`,
         },
       },
     },
@@ -55,6 +56,13 @@ const builder = {
       resolve: `gatsby-plugin-material-ui`,
       options: {
         pathToStylesProvider: `.gatsby/mui-styles-provider-props`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        color: `#f8807d`,
+        showSpinner: false,
       },
     },
   ],

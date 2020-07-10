@@ -1,6 +1,6 @@
 import React from 'react'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import SyntaxHighlighter from 'react-syntax-highlighter'
+import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 import { IThemedProps } from '@root/theme'
@@ -21,7 +21,12 @@ const Code: React.FC<IArticleSectionProps> = ({ section: { html } }) => {
   const { content, language } = html[0]
   return (
     <CodeWrapper>
-      <SyntaxHighlighter showLineNumbers language={language?.toLowerCase()} style={atomDark} css={syntaxHighlighterCss}>
+      <SyntaxHighlighter
+        showLineNumbers
+        language={language?.toLowerCase()}
+        style={atomOneDark}
+        css={syntaxHighlighterCss}
+      >
         {content}
       </SyntaxHighlighter>
     </CodeWrapper>
