@@ -1,5 +1,7 @@
 import React from 'react'
+import { Container } from '@material-ui/core'
 import Gitalk from 'gatsby-plugin-gitalk'
+import './style.styl'
 
 interface ICommentProps {
   title: string
@@ -7,12 +9,14 @@ interface ICommentProps {
 }
 
 const Comment: React.FC<ICommentProps> = ({ title, id }) => (
-  <Gitalk
-    options={{
-      id,
-      title,
-    }}
-  />
+  <Container maxWidth='md'>
+    <Gitalk
+      options={{
+        id,
+        title,
+      }}
+    />
+  </Container>
 )
 
 export default Comment
