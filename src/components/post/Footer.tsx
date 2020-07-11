@@ -1,17 +1,18 @@
 import React from 'react'
-import { Typography } from '@material-ui/core'
 import ChevronLeftRoundedIcon from '@material-ui/icons/ChevronLeftRounded'
 import ChevronRightRoundedIcon from '@material-ui/icons/ChevronRightRounded'
-import dayjs from 'dayjs'
 import { IPage } from '@phyzess/nophy'
 import styled from '@emotion/styled'
 import Link from '@components/link'
+import Comment from '@components/comment'
 import { TagGroup } from '@components/tag'
 
 export interface IFooterProps {
   previous: Partial<IPage>
   next: null | Partial<IPage>
   tags: string
+  id: string
+  name: string
 }
 
 const FooterRow = styled.div`
@@ -28,7 +29,7 @@ const StyledName = styled.span`
   white-space: nowrap;
 `
 
-const Footer: React.FC<IFooterProps> = ({ previous, next, tags }) => {
+const Footer: React.FC<IFooterProps> = ({ previous, next, tags, id, name }) => {
   return (
     <footer>
       <FooterRow>
@@ -47,6 +48,9 @@ const Footer: React.FC<IFooterProps> = ({ previous, next, tags }) => {
             <ChevronRightRoundedIcon fontSize='small' />
           </Link>
         )}
+      </FooterRow>
+      <FooterRow>
+        <Comment title={name} id={id} />
       </FooterRow>
     </footer>
   )

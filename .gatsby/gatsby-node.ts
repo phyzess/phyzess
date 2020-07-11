@@ -73,11 +73,11 @@ const getPostsFromNotion = async () => {
 }
 
 export async function sourceNodes({ actions: { createNode }, createNodeId, createContentDigest }) {
-  console.log('🦑 fetching site config data start >>>')
+  console.log('🍑 fetching site config data start >>>')
   const siteConfig = await getSiteConfigFromNotion()
-  console.log('🦑 fetching site config data complete <<<')
+  console.log('🍑 fetching site config data complete <<<')
 
-  console.log('🦑 generating site meta start >>>')
+  console.log('🍑 generating site meta start >>>')
   const siteCopyrightName = siteConfig.copyrightName
   const siteMeta = {
     ...siteConfig,
@@ -93,13 +93,13 @@ export async function sourceNodes({ actions: { createNode }, createNodeId, creat
       contentDigest: createContentDigest(siteMeta),
     },
   })
-  console.log('🦑 generating site meta complete <<<')
+  console.log('🍑 generating site meta complete <<<')
 
-  console.log('🦑 fetching post list data start >>>')
+  console.log('🍑 fetching post list data start >>>')
   const posts = await getPostsFromNotion()
-  console.log('🦑 fetching post list data complete >>>')
+  console.log('🍑 fetching post list data complete >>>')
 
-  console.log('🦑 generating posts start >>>')
+  console.log('🍑 generating posts start >>>')
   posts.forEach((post) =>
     createNode({
       ...post,
@@ -113,7 +113,7 @@ export async function sourceNodes({ actions: { createNode }, createNodeId, creat
       },
     })
   )
-  console.log('🦑 generating posts end <<<')
+  console.log('🍑 generating posts end <<<')
 }
 
 export async function createPages({ graphql, actions }) {

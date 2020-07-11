@@ -19,6 +19,8 @@ jobs:
           PHYZESS_NOTION_TOKEN: ${{ secrets.PHYZESS_NOTION_TOKEN }}
           PHYZESS_SITE_CONFIG_URL: ${{ secrets.PHYZESS_SITE_CONFIG_URL }}
           PHYZESS_POST_LIST_URL: ${{ secrets.PHYZESS_POST_LIST_URL }}
+          PHYZESS_GITALK_CLIENT_ID: ${{ secrets.PHYZESS_GITALK_CLIENT_ID }}
+          PHYZESS_GITALK_CLIENT_SECRET: ${{ secrets.PHYZESS_GITALK_CLIENT_SECRET }}
 
       - name: Deploy to netlify
         uses: netlify/actions/cli@master
@@ -28,4 +30,3 @@ jobs:
         with:
           args: deploy --dir=public --prod
           secrets: '["NETLIFY_AUTH_TOKEN", "NETLIFY_SITE_ID"]'
-

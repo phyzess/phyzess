@@ -63,6 +63,18 @@ const builder = {
         showSpinner: false,
       },
     },
+    {
+      resolve: `gatsby-plugin-gitalk`,
+      options: {
+        config: {
+          clientID: process.env.PHYZESS_GITALK_CLIENT_ID,
+          clientSecret: process.env.PHYZESS_GITALK_CLIENT_SECRET,
+          repo: 'phyzess',
+          owner: 'phyzess',
+          admin: ['phyzess'],
+        },
+      },
+    },
   ],
 }
 
