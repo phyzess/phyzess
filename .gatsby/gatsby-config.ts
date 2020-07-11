@@ -40,9 +40,7 @@ const builder = {
     {
       resolve: 'gatsby-plugin-offline',
       options: {
-        workboxConfig: {
-          globPatterns: ['**/*'],
-        },
+        precachePages: [`/posts/*`],
       },
     },
     `gatsby-transformer-sharp`,
