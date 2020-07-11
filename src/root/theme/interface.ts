@@ -8,6 +8,7 @@ export interface IBasicColor {
   white: string // 白色
   black: string // 黑色
   red: string // 红色
+  primaryActive: string // primary active 时的颜色
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface

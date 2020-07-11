@@ -9,7 +9,7 @@ export const neuLightColor: INeuColor = {
   neuTextDefault: '#666',
   neuTextSecondary: '#BABECC',
   neuTextPrimary: basicColor.primary,
-  neuTextActive: '#ff2811',
+  neuTextActive: basicColor.primaryActive,
   neuTextShadow: basicColor.white,
 }
 

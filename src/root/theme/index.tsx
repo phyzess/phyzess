@@ -53,7 +53,7 @@ export const getMuiTheme = (theme: ITheme) =>
             textShadow: `1px 1px 1px ${theme.neuTextShadow}`,
           },
           '::selection': {
-            background: theme.primary,
+            backgroundColor: theme.primary,
             color: theme.contrastText,
             textShadow: 'none',
           },

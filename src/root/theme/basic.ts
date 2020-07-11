@@ -7,6 +7,7 @@ export const basicColor: IBasicColor = {
   white: '#fff',
   black: '#000',
   red: '#AE1100',
+  primaryActive: '#f36f61',
 }
 
 export const basicTheme: IBasicTheme = {

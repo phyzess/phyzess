@@ -4,7 +4,7 @@ $contrastText = #f1fcff
 $white = #fff
 $black = #000
 $red = #AE1100
-$Active = #ff2811
+$active = #f36f61
 
 // light
 $neuLightBackground = #f0f0f3
@@ -14,7 +14,7 @@ $neuLightPrimary = #474747
 $neuLightTextDefault = #666
 $neuLightTextSecondary = #BABECC
 $neuLightTextPrimary = $primary
-$neuLightTextActive = $Active
+$neuLightTextActive = $active
 $neuLightTextShadow = $white
 
 // dark
@@ -25,5 +25,13 @@ $neuDarkPrimary = #f0f0f0
 $neuDarkTextDefault = #b9b9b9
 $neuDarkTextSecondary = #BABECC
 $neuDarkTextPrimary = $priDarkmary
-$neuDarkTextActive = $Active
+$neuDarkTextActive = $active
 $neuDarkTextShadow = $black
+
+@media (prefers-color-scheme: dark) 
+  /* 黑暗模式，深色主题 */
+  $neuContrastColor = $neuLightBackground
+
+@media (prefers-color-scheme: light)
+  /* 浅色主题 */
+  $neuContrastColor = $neuDarkBackground

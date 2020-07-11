@@ -723,13 +723,14 @@
 .gt-container * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  text-shadow: none;
 }
 .gt-container a {
   color: $primary;
 }
 .gt-container a:hover {
-  color: $Active;
-  border-color: $Active;
+  color: $active;
+  border-color: $active;
 }
 .gt-container a.is--active {
   color: #333;
@@ -767,7 +768,7 @@
   height: 100%;
 }
 .gt-container .gt-ico-github svg {
-  fill: inherit;
+  fill: $neuContrastColor;
 }
 .gt-container .gt-spinner {
   position: relative;
@@ -877,11 +878,11 @@
 }
 .gt-container .gt-btn-preview:hover {
   background-color: #f2f2f2;
-  border-color: $Active;
+  border-color: $secondary;
 }
 .gt-container .gt-btn-public:hover {
-  background-color: $Active;
-  border-color: $Active;
+  background-color: $secondary;
+  border-color: $secondary;
 }
 .gt-container .gt-error {
   text-align: center;
