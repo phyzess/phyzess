@@ -7,6 +7,7 @@ import { IThemedProps } from '@root/theme'
 import { IArticleSectionProps } from './types'
 
 const syntaxHighlighterCss = css`
+  font-size: 0.9em;
   border-radius: 0.5em !important;
 `
 
