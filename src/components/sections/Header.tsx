@@ -12,6 +12,7 @@ const commonCss = (theme: ITheme) => css`
   &:before {
     padding-right: 0.3em;
     margin-left: -0.5em;
+    font-family: PhyzessLombok;
     color: ${theme.primary};
     opacity: 0.8;
   }
@@ -21,7 +22,7 @@ const StyledHeader = styled.h2<IThemedProps>`
   ${({ theme }) => commonCss(theme)}
 
   &:before {
-    content: '//';
+    content: 'H';
   }
 `
 
@@ -29,7 +30,7 @@ const StyledSubHeader = styled.h3<IThemedProps>`
   ${({ theme }) => commonCss(theme)}
 
   &:before {
-    content: '///';
+    content: 'H';
   }
 `
 
@@ -37,7 +38,7 @@ const StyledSubSubHeader = styled.h4<IThemedProps>`
   ${({ theme }) => commonCss(theme)}
 
   &:before {
-    content: '/\///';
+    content: 'H';
   }
 `
 

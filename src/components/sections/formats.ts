@@ -4,6 +4,7 @@ import { TGetFormaCSS, TFormatMap } from './types'
 export const getInlineCodeCSS: TGetFormaCSS = () => css`
   line-height: normal;
   background: rgba(135, 131, 120, 0.15);
+  font-family: PhyzessFiraCode;
   color: #eb5757;
   border-radius: 3px;
   font-size: 85%;

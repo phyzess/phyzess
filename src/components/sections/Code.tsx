@@ -9,6 +9,10 @@ import { IArticleSectionProps } from './types'
 const syntaxHighlighterCss = css`
   font-size: 0.9em;
   border-radius: 0.5em !important;
+  font-family: PhyzessFiraCode !important;
+  & * {
+    font-family: PhyzessFiraCode !important;
+  }
 `
 
 const CodeWrapper = styled.div<IThemedProps>`

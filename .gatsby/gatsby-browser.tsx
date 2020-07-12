@@ -1,7 +1,7 @@
 import React from 'react'
 import { RootComponent } from '../src/root'
 // custom typefaces
-import 'typeface-nunito'
+import '../static/font/index.css'
 
 import 'normalize.css'
 import 'prismjs/themes/prism.css'

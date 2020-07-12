@@ -17,5 +17,5 @@ export const basicTheme: IBasicTheme = {
   borderRadius: '5px',
 }
 
-export const headerFontFamily = ['Nunito', 'Source Sans Pro', 'sans-serif'].join(',')
-export const bodyFontFamily = ['Nunito', 'Avenir', 'Helvetica', 'sans-serif'].join(',')
+export const headerFontFamily = ['PhyzessNunito', 'Source Sans Pro', 'sans-serif'].join(',')
+export const bodyFontFamily = ['PhyzessNunito', 'Avenir', 'Helvetica', 'sans-serif'].join(',')
