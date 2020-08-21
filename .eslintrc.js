@@ -22,7 +22,14 @@ module.exports = {
     node: true,
   },
   globals: {},
-  rules: {},
+  rules: {
+    'react-hooks/exhaustive-deps': [
+      'warn',
+      {
+        additionalHooks: 'useRecoilCallback',
+      },
+    ],
+  },
   settings: {
     react: {
       version: 'detect',
